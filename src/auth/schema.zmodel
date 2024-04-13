@@ -1,0 +1,20 @@
+import "../../prisma/models/base"
+import "../../prisma/models/user"
+
+model AuthEmailVerification extends Base {
+  email String @db.Citext @email @trim @lower
+  codeHash String
+  tokenHash String
+
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  @@unique([codeHash, tokenHash])
+}
+
+model AuthLuciaSession extends Base {
+  expiresAt DateTime
+
+  userId String
+  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
+}

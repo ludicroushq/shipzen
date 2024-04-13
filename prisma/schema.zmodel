@@ -1,0 +1,20 @@
+import "models/user"
+import "../src/auth/schema"
+import "../src/admin/schema"
+
+generator client {
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native"]
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  extensions = [citext]
+
+  url       = env("DATABASE_URL")
+}
+
+plugin zod {
+  provider = '@core/zod'
+}
