@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { options } from '@/admin';
 import { authDb, authIsAdmin } from '@/auth';
 import schema from '@/../prisma/json-schema/json-schema.json';
-import { action, deleteAction } from './actions';
+import { action, deleteAction, searchPaginatedResourceAction } from './actions';
 
 // eslint-disable-next-line import/no-default-export
 export default async function AdminPage({
@@ -28,6 +28,7 @@ export default async function AdminPage({
     schema,
     action,
     deleteAction,
+    searchPaginatedResourceAction,
   });
 
   return <NextAdmin {...props} />;
