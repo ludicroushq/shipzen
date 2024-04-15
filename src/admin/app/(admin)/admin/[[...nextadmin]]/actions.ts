@@ -3,6 +3,8 @@ import { type ModelName, type ActionParams } from '@premieroctet/next-admin';
 import {
   submitForm,
   deleteResourceItems,
+  type SearchPaginatedResourceParams,
+  searchPaginatedResource,
 } from '@premieroctet/next-admin/dist/actions';
 import { notFound } from 'next/navigation';
 import { options } from '@/admin';
@@ -26,4 +28,19 @@ export const deleteAction = async (
   const db = await authDb();
 
   return deleteResourceItems(db, model, ids);
+};
+
+export const searchPaginatedResourceAction = async (
+  actionParams: ActionParams,
+  params: SearchPaginatedResourceParams,
+) => {
+  const isAdmin = await authIsAdmin();
+  if (!isAdmin) return notFound();
+
+  const db = await authDb();
+
+  return searchPaginatedResource(
+    { ...actionParams, options, prisma: db },
+    params,
+  );
 };
