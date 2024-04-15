@@ -41,7 +41,7 @@ export const create = unauthenticatedProcedure
 
     await sendEmail(
       {
-        subject: 'Sign in to your SHIPZEN account',
+        subject: 'Sign in to your TODO account',
         to: email,
       },
       SendAuthEmailVerificationEmail,

@@ -6,8 +6,8 @@ import { Navigation } from './_components/navigation';
 import { Toast } from './_components/toast';
 
 export const metadata: Metadata = {
-  title: 'SHIPZEN',
-  description: 'SHIPZEN',
+  title: 'TODO',
+  description: 'TODO',
 };
 
 // eslint-disable-next-line import/no-default-export
