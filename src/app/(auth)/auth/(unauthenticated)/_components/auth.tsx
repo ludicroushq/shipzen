@@ -1,1 +1,1 @@
-../../../../auth/app/(auth)/auth/(unauthenticated)/_components/auth.tsx
+../../../../../auth/app/(auth)/auth/(unauthenticated)/_components/auth.tsx
