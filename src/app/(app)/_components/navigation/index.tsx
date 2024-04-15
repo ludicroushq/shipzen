@@ -22,12 +22,11 @@ export function Navigation(props: NavigationProps) {
   return (
     <Navbar
       classNames={{
-        base: 'container',
-        wrapper: 'px-0',
+        wrapper: 'container px-8 sm:px-14 md:px-16',
       }}
       height="4.5rem"
       isMenuOpen={isMenuOpen}
-      maxWidth="full"
+      isBordered
       onMenuOpenChange={setIsMenuOpen}
       position="static"
     >

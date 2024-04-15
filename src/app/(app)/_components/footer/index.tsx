@@ -1,5 +1,4 @@
 import { Link } from '@nextui-org/react';
-import { baseDomain } from '@/config/app';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -9,21 +8,19 @@ export function Footer() {
       <div className="container">
         <div className="prose">
           <p>
-            a ludicrous company <br />
-            made with ❤️ by{' '}
-            <Link
-              color="foreground"
-              href="https://twitter.com/nahtnam"
-              target="_blank"
-            >
-              @nahtnam
-            </Link>
+            &copy; {year} SHIPZEN. All rights reserved.
             <br />
-            <Link color="foreground" href={`mailto:support@${baseDomain}`}>
-              contact support
-            </Link>
-            <br />
-            <small>&copy; {year} ludicrous LLC. All rights reserved.</small>
+            <small>
+              Powered by{' '}
+              <Link
+                color="foreground"
+                href="https://shipzen.dev"
+                target="_blank"
+              >
+                <small>ShipZen</small>
+              </Link>
+              .
+            </small>
           </p>
         </div>
       </div>
