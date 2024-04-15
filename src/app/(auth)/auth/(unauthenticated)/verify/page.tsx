@@ -1,0 +1,1 @@
+../../../../../auth/app/(auth)/auth/(unauthenticated)/verify/page.tsx
