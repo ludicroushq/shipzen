@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <section className="container mt-12">
       <div className="prose prose-lg">
-        <h1>SHIPZEN</h1>
-        <p>SHIPZEN</p>
+        <h1>TODO</h1>
+        <p>TODO</p>
         <p>
           <Button
             as={Link}

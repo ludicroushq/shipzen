@@ -1,6 +1,6 @@
 import { isDev } from './node';
 
-export const rootDomain = 'SHIPZEN.app';
+export const rootDomain = 'TODO.app';
 export const baseDomain = (() => {
   if (isDev) return 'localhost:3000';
   return `www.${rootDomain}`;

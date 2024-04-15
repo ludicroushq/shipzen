@@ -8,13 +8,13 @@ export function Footer() {
       <div className="container">
         <div className="prose">
           <p>
-            &copy; {year} SHIPZEN. All rights reserved.
+            &copy; {year} TODO. All rights reserved.
             <br />
             <small>
               Powered by{' '}
               <Link
                 color="foreground"
-                href="https://shipzen.dev"
+                href="https://www.shipzen.dev"
                 target="_blank"
               >
                 <small>ShipZen</small>

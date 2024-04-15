@@ -11,11 +11,11 @@ export function SendAuthEmailVerificationEmail(
 ) {
   const { token } = props;
   return (
-    <EmailWrapper {...props} previewText="Your auth code for SHIPZEN.">
+    <EmailWrapper {...props} previewText="Your auth code for TODO.">
       <Container>
         <Section>
           <Text className="mt-4 text-center text-2xl font-bold">
-            Your Auth Code for SHIPZEN
+            Your Auth Code for TODO
           </Text>
         </Section>
         <Section className="rounded-lg border border-solid border-[#eaeaea] p-4">
