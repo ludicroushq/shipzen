@@ -5,7 +5,7 @@ import { BiRightArrowAlt } from 'react-icons/bi';
 export default function Home() {
   return (
     <section className="container mt-12">
-      <div className="prose prose-lg">
+      <div className="prose prose-xl">
         <h1>TODO</h1>
         <p>TODO</p>
         <p>
