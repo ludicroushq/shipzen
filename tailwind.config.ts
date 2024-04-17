@@ -29,6 +29,7 @@ const config: Config = {
     },
   },
   darkMode: 'class',
+  presets: [require('@premieroctet/next-admin/dist/preset')],
   plugins: [nextui(), require('@tailwindcss/typography')],
 };
 
