@@ -1,1 +1,0 @@
-../../../../auth/app/(auth)/auth/(authenticated)/layout.tsx

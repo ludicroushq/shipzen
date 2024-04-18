@@ -1,1 +1,0 @@
-../../../../../server/app/(server)/api/trpc/[trpc]/route.ts
