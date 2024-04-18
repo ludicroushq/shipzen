@@ -5,7 +5,6 @@ import { options } from '@/admin';
 import { authDb, authIsAdmin } from '@/auth';
 import schema from '@/../prisma/json-schema/json-schema.json';
 import { action, deleteAction, searchPaginatedResourceAction } from './actions';
-import '@premieroctet/next-admin/dist/styles.css';
 
 // eslint-disable-next-line import/no-default-export
 export default async function AdminPage({
