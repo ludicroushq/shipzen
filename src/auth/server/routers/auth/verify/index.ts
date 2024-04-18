@@ -3,7 +3,7 @@ import { serializeCookie } from 'oslo/cookie';
 import { unauthenticatedProcedure } from '@/server/trpc';
 import { sha256String } from '@/auth/hash';
 import { lucia } from '@/auth';
-import { AUTH_VERIFICATION_CODE_COOKIE_NAME } from '@/auth/app/(auth)/auth/_utils/constants';
+import { AUTH_VERIFICATION_CODE_COOKIE_NAME } from '@/auth/app/auth/_utils/constants';
 import { authVerifyInputSchema } from './schema';
 
 export const verify = unauthenticatedProcedure
