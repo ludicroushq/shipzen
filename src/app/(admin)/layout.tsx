@@ -1,1 +1,0 @@
-../../../admin/app/(admin)/layout.tsx

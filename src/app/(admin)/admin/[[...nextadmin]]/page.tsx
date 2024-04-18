@@ -1,1 +1,0 @@
-../../../../admin/app/(admin)/admin/[[...nextadmin]]/page.tsx
