@@ -40,6 +40,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.3",
     "react-icons": "^5.1.0",
+    "sharp": "^0.33.3",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.2.2",
     "tslog": "^4.9.2",
@@ -112,7 +113,10 @@
       ]
     },
     "app:build": {
-      "command": "next build"
+      "command": "next build",
+      "dependencies": [
+        "zenstack:generate"
+      ]
     },
     "app:start": {
       "command": "next start -p 3000",
