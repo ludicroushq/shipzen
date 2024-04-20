@@ -1,12 +1,12 @@
-import type { Session, User } from 'lucia';
-import { Lucia, TimeSpan } from 'lucia';
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 import { UserRole, type User as DatabaseUser } from '@prisma/client';
-import { cache } from 'react';
+import { enhance } from '@zenstackhq/runtime';
+import type { Session, User } from 'lucia';
+import { Lucia, TimeSpan } from 'lucia';
 import { cookies } from 'next/headers';
-import { type AuthUser, enhance } from '@zenstackhq/runtime';
-import { isProd } from '@/config/node';
+import { cache } from 'react';
 import { dbAdmin } from '@/prisma';
+import { isProd } from '@/config/node';
 
 const adapter = new PrismaAdapter(dbAdmin.authLuciaSession, dbAdmin.user);
 
@@ -60,7 +60,7 @@ export const authDb = cache(async () => {
   const { user } = await auth();
 
   const db = enhance(dbAdmin, {
-    user: (user as unknown as AuthUser | null) ?? undefined,
+    user: user ?? undefined,
   });
 
   return db;

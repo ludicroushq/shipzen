@@ -13,10 +13,11 @@ const schema = z.object({
   user: decodedString,
   pass: decodedString,
   from: decodedString,
-  replyTo: decodedString,
+  replyTo: decodedString.nullable(),
   secure: z
     .enum(['true', 'false'])
     .default('false')
+    .nullable()
     .transform((v) => v === 'true'),
 });
 
@@ -60,7 +61,7 @@ export async function sendEmail<T>(
   });
   const email = await transporter.sendMail({
     from,
-    replyTo,
+    replyTo: replyTo ?? undefined,
     to,
     subject,
     html: emailBody,
