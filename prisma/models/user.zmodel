@@ -7,19 +7,18 @@ enum UserRole {
 }
 
 model User extends Base {
-  email String @unique @db.Citext @email @trim @lower
-  role UserRole @default(USER) @deny('read,update', auth().role != ADMIN)
+  email             String             @unique @db.Citext @email @trim @lower
+  role              UserRole           @default(USER) @deny('read,update', auth().role != ADMIN)
 
   authLuciaSessions AuthLuciaSession[]
 
-  @@allow('read,create', auth() == this)
-
+  @@allow('read', auth() == this)
   @@allow('all', auth().role == ADMIN)
 }
 
 abstract model UserEntity extends Base {
   userId String
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@allow('create', userId == auth().id)
   @@allow('update', userId == auth().id && future().userId == auth().id)
