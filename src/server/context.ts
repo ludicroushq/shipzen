@@ -1,6 +1,6 @@
 import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 import type { Session, User } from 'lucia';
-import { auth, authDb } from '@/auth';
+import { getAuth, getEnhancedDb } from '@/auth';
 import { dbAdmin } from '@/prisma';
 
 export type Context = {
@@ -12,8 +12,8 @@ export type Context = {
 export async function createContext(
   opts?: Pick<FetchCreateContextFnOptions, 'req' | 'resHeaders'>,
 ): Promise<Context> {
-  const { user, session } = await auth();
-  const db = await authDb();
+  const auth = await getAuth();
+  const db = await getEnhancedDb();
 
   const context = {
     db,
@@ -21,7 +21,7 @@ export async function createContext(
     resHeaders: opts?.resHeaders ?? null,
   };
 
-  if (!user) {
+  if (!auth) {
     return {
       ...context,
       user: null,
@@ -31,7 +31,7 @@ export async function createContext(
 
   return {
     ...context,
-    user,
-    session,
+    user: auth.user,
+    session: auth.session,
   };
 }

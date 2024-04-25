@@ -7,7 +7,7 @@ import { Controller, useForm } from 'react-hook-form';
 import type { z } from 'zod';
 import { errorMap } from 'zod-validation-error';
 import { authVerifyInputSchema } from '@/auth/server/routers/auth/verify/schema';
-import { trpcReactQuery } from '@/app/(app)/_utils/trpc/react-query';
+import { trpcReactQuery } from '@/app/_utils/trpc/react-query';
 
 type VerifyProps = {
   code: string;

@@ -10,7 +10,7 @@ import { isDev } from '@/config/node';
 import {
   trpcReactQuery,
   trpcReactQueryClient,
-} from '@/app/(app)/_utils/trpc/react-query';
+} from '@/app/_utils/trpc/react-query';
 
 const queryClient = new QueryClient({
   defaultOptions: {

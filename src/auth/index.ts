@@ -40,36 +40,33 @@ declare module 'lucia' {
   }
 }
 
-export const auth = cache(
-  async (): Promise<
-    { user: User; session: Session } | { user: null; session: null }
-  > => {
+export const getAuth = cache(
+  async (): Promise<{ user: User; session: Session } | null> => {
     const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
     if (!sessionId) {
-      return {
-        user: null,
-        session: null,
-      };
+      return null;
     }
 
-    return lucia.validateSession(sessionId);
+    const auth = await lucia.validateSession(sessionId);
+    if (!auth.session) return null;
+    return auth;
   },
 );
 
-export const authDb = cache(async () => {
-  const { user } = await auth();
+export const getEnhancedDb = cache(async () => {
+  const auth = await getAuth();
 
   const db = enhance(dbAdmin, {
-    user: user ?? undefined,
+    user: auth?.user,
   });
 
   return db;
 });
 
-export const authIsAdmin = cache(async () => {
-  const { user } = await auth();
+export const verifyAdmin = cache(async () => {
+  const auth = await getAuth();
 
-  if (user && user.role === UserRole.ADMIN) {
+  if (auth?.user && auth.user.role === UserRole.ADMIN) {
     return true;
   }
 

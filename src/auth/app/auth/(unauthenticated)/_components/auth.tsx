@@ -9,7 +9,7 @@ import { Controller, useForm } from 'react-hook-form';
 import type { z } from 'zod';
 import { errorMap } from 'zod-validation-error';
 import { authCreateInputSchema } from '@/auth/server/routers/auth/create/schema';
-import { trpcReactQuery } from '@/app/(app)/_utils/trpc/react-query';
+import { trpcReactQuery } from '@/app/_utils/trpc/react-query';
 import { AUTH_EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MINUTES } from '@/auth/server/routers/auth/create/constants';
 import { AUTH_VERIFICATION_CODE_COOKIE_NAME } from '../../_utils/constants';
 

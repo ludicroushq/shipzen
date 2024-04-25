@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import { auth } from '@/auth';
+import { getAuth } from '@/auth';
 import { Footer } from './_components/footer';
 import { Navigation } from './_components/navigation';
 import { Toast } from './_components/toast';
@@ -16,10 +16,10 @@ export default async function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { user } = await auth();
+  const auth = await getAuth();
   return (
     <div className="flex h-full flex-col">
-      <Navigation user={user} />
+      <Navigation user={auth?.user} />
       <main className="flex-grow">{children}</main>
       <Footer />
       <Suspense>
