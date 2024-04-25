@@ -57,7 +57,7 @@ export const getEnhancedDb = cache(async () => {
   const auth = await getAuth();
 
   const db = enhance(dbAdmin, {
-    user: auth?.user,
+    user: auth?.user as DatabaseUser,
   });
 
   return db;
