@@ -11,7 +11,8 @@
     "lint": "wireit",
     "pretty": "wireit",
     "start": "wireit",
-    "test": "wireit"
+    "test": "wireit",
+    "typecheck": "wireit"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -102,7 +103,14 @@
     "test": {
       "dependencies": [
         "lint",
-        "pretty"
+        "pretty",
+        "typecheck"
+      ]
+    },
+    "typecheck": {
+      "command": "tsc --noEmit",
+      "dependencies": [
+        "zenstack:generate"
       ]
     },
     "app:dev": {
@@ -125,7 +133,8 @@
     "ci:test": {
       "dependencies": [
         "ci:lint",
-        "ci:pretty"
+        "ci:pretty",
+        "ci:typecheck"
       ]
     },
     "ci:lint": {
@@ -136,6 +145,12 @@
     },
     "ci:pretty": {
       "command": "prettier --check ."
+    },
+    "ci:typecheck": {
+      "command": "tsc --noEmit",
+      "dependencies": [
+        "zenstack:generate"
+      ]
     },
     "zenstack:generate": {
       "command": "zenstack generate"

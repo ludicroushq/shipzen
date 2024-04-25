@@ -6,4 +6,5 @@ nextui
 premieroctet
 shipzen
 trpcrsc
+typecheck
 zenstackhq
