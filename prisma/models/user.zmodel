@@ -13,7 +13,6 @@ model User extends Base {
   authLuciaSessions AuthLuciaSession[]
 
   @@allow('read', auth() == this)
-  @@allow('all', auth().role == ADMIN)
 }
 
 abstract model UserEntity extends Base {
@@ -22,8 +21,6 @@ abstract model UserEntity extends Base {
 
   @@allow('create', userId == auth().id)
   @@allow('update', userId == auth().id && future().userId == auth().id)
-
-  @@allow('all', auth().role == ADMIN)
 }
 
 abstract model PrivateUserEntity extends UserEntity {
