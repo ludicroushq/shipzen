@@ -12,7 +12,7 @@ import { Logo } from '../logo';
 import { NavigationItems } from './navigation-items';
 
 type NavigationProps = {
-  user: User | null;
+  user: User | undefined;
 };
 
 export function Navigation(props: NavigationProps) {

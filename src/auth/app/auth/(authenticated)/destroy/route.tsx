@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import * as Sentry from '@sentry/nextjs';
-import { createTRPCRoute } from '@/app/(app)/_utils/trpc/create-trpc-route';
+import { createTRPCRoute } from '@/app/_utils/trpc/create-trpc-route';
 import { baseUrl } from '@/config/app';
 
 export async function GET(request: NextRequest) {

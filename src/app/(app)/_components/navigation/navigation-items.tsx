@@ -12,7 +12,7 @@ import type { User } from 'lucia';
 import { NavigationLink } from './_utils/navigation-link';
 
 type NavigationItemsProps = {
-  user: User | null;
+  user: User | undefined;
 };
 export function NavigationItems(props: NavigationItemsProps) {
   const { user } = props;

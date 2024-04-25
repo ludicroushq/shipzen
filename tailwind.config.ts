@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import * as defaultColors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
 import { nextui } from '@nextui-org/react';
 
 const config: Config = {
@@ -26,6 +27,9 @@ const config: Config = {
         xl: '4rem',
         '2xl': '4rem',
       },
+    },
+    fontFamily: {
+      sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
     },
   },
   darkMode: 'class',

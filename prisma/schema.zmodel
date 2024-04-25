@@ -1,5 +1,4 @@
 import "models/user"
-import "../src/auth/schema"
 import "../src/admin/schema"
 
 generator client {

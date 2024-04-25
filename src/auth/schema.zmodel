@@ -1,9 +1,9 @@
-import "../../prisma/models/base"
 import "../../prisma/models/user"
+import "../../prisma/models/base"
 
 model AuthEmailVerification extends Base {
-  email String @db.Citext @email @trim @lower
-  codeHash String
+  email     String    @db.Citext @email @trim @lower
+  codeHash  String
   tokenHash String
 
   expiresAt DateTime
@@ -15,6 +15,6 @@ model AuthEmailVerification extends Base {
 model AuthLuciaSession extends Base {
   expiresAt DateTime
 
-  userId String
-  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
+  userId    String
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
 }

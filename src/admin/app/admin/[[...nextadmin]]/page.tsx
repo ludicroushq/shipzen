@@ -2,7 +2,7 @@ import { NextAdmin } from '@premieroctet/next-admin';
 import { getPropsFromParams } from '@premieroctet/next-admin/dist/appRouter';
 import { notFound } from 'next/navigation';
 import { options } from '@/admin';
-import { authDb, authIsAdmin } from '@/auth';
+import { getEnhancedDb, verifyAdmin } from '@/auth';
 import schema from '@/../prisma/json-schema/json-schema.json';
 import { action, deleteAction, searchPaginatedResourceAction } from './actions';
 
@@ -15,10 +15,10 @@ export default async function AdminPage({
   searchParams: Record<string, string | string[] | undefined> | undefined;
 }) {
   const { nextadmin } = params;
-  const isAdmin = await authIsAdmin();
+  const isAdmin = await verifyAdmin();
   if (!isAdmin) return notFound();
 
-  const db = await authDb();
+  const db = await getEnhancedDb();
 
   const props = await getPropsFromParams({
     params: nextadmin,
