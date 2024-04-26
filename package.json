@@ -109,7 +109,7 @@
       "service": true
     },
     "ci:test": {
-      "dependencies": ["ci:lint", "ci:typecheck"]
+      "dependencies": ["ci:lint", "ci:spellcheck", "ci:typecheck"]
     },
     "ci:lint": {
       "command": "biome check .",
