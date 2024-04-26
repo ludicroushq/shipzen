@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client';
-import { enhance } from '@zenstackhq/runtime';
+import { PrismaClient } from "@prisma/client";
+import { enhance } from "@zenstackhq/runtime";
 
 const prisma = new PrismaClient();
 

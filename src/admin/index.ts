@@ -1,5 +1,5 @@
-import { type NextAdminOptions } from '@premieroctet/next-admin';
+import type { NextAdminOptions } from "@premieroctet/next-admin";
 
 export const options: NextAdminOptions = {
-  basePath: '/admin',
+	basePath: "/admin",
 };
