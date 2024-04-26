@@ -1,7 +1,7 @@
-import { NextResponse, type NextRequest } from 'next/server';
-import * as Sentry from '@sentry/nextjs';
 import { createTRPCRoute } from '@/app/_utils/trpc/create-trpc-route';
 import { baseUrl } from '@/config/app';
+import * as Sentry from '@sentry/nextjs';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   const headers = new Headers();

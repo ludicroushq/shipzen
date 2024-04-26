@@ -1,7 +1,6 @@
 import { Button, Link } from '@nextui-org/react';
 import { BiRightArrowAlt } from 'react-icons/bi';
 
-// eslint-disable-next-line import/no-default-export
 export default function Home() {
   return (
     <section className="container mt-12">

@@ -1,6 +1,6 @@
+import { getAuth } from '@/auth';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import { getAuth } from '@/auth';
 import { Footer } from './_components/footer';
 import { Navigation } from './_components/navigation';
 import { Toast } from './_components/toast';
@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   description: 'TODO',
 };
 
-// eslint-disable-next-line import/no-default-export
 export default async function Layout({
   children,
 }: Readonly<{

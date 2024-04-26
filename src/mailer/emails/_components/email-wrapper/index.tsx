@@ -1,6 +1,6 @@
-import { Html, Head, Body, Preview, Tailwind } from '@react-email/components';
-import type { ReactNode } from 'react';
 import type { EmailProps } from '@/mailer';
+import { Body, Head, Html, Preview, Tailwind } from '@react-email/components';
+import type { ReactNode } from 'react';
 
 type EmailWrapperProps = {
   children: ReactNode;

@@ -1,14 +1,13 @@
 'use client';
 
 import * as Sentry from '@sentry/nextjs';
-import Error from 'next/error';
+import NextError from 'next/error';
 import { useEffect } from 'react';
 
-// eslint-disable-next-line import/no-default-export
 export default function GlobalError({
   error,
 }: {
-  error: Error & { digest?: string };
+  error: NextError & { digest?: string };
 }) {
   useEffect(() => {
     Sentry.captureException(error);
@@ -17,8 +16,8 @@ export default function GlobalError({
   return (
     <html lang="en">
       <body>
-        {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any */}
-        <Error statusCode={undefined as unknown as any} />
+        {/* biome-ignore lint/suspicious/noExplicitAny: instructions from sentry */}
+        <NextError statusCode={undefined as unknown as any} />
       </body>
     </html>
   );

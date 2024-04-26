@@ -1,16 +1,16 @@
 'use client';
 
+import {
+  trpcReactQuery,
+  trpcReactQueryClient,
+} from '@/app/_utils/trpc/react-query';
+import { isDev } from '@/config/node';
 import { NextUIProvider } from '@nextui-org/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useRouter } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { toast } from 'sonner';
-import { isDev } from '@/config/node';
-import {
-  trpcReactQuery,
-  trpcReactQueryClient,
-} from '@/app/_utils/trpc/react-query';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,7 +31,6 @@ export function Providers({ children }: { children: ReactNode }) {
       queryClient={queryClient}
     >
       <QueryClientProvider client={queryClient}>
-        {/* eslint-disable-next-line @typescript-eslint/unbound-method -- works with nextui */}
         <NextUIProvider className="h-full" navigate={router.push}>
           {children}
         </NextUIProvider>

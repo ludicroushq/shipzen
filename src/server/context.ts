@@ -1,7 +1,7 @@
-import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
-import type { Session, User } from 'lucia';
 import { getAuth, getEnhancedDb } from '@/auth';
 import { dbAdmin } from '@/prisma';
+import type { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
+import type { Session, User } from 'lucia';
 
 export type Context = {
   db: typeof dbAdmin;

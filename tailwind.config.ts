@@ -1,7 +1,7 @@
+import { nextui } from '@nextui-org/react';
 import type { Config } from 'tailwindcss';
 import * as defaultColors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
-import { nextui } from '@nextui-org/react';
 
 const config: Config = {
   content: [
@@ -37,5 +37,4 @@ const config: Config = {
   plugins: [nextui(), require('@tailwindcss/typography')],
 };
 
-// eslint-disable-next-line import/no-default-export
 export default config;

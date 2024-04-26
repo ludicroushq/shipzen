@@ -1,10 +1,10 @@
 import {
   Button,
+  type ButtonProps,
   Link,
   type LinkProps,
-  NavbarItem,
-  type ButtonProps,
   type Merge,
+  NavbarItem,
 } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
 import type { IconType } from 'react-icons/lib';

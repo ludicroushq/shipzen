@@ -1,6 +1,6 @@
-import { TRPCError } from '@trpc/server';
 import { lucia } from '@/auth';
 import { authenticatedProcedure } from '@/server/trpc';
+import { TRPCError } from '@trpc/server';
 
 export const destroy = authenticatedProcedure.mutation(async ({ ctx }) => {
   const { session, resHeaders } = ctx;

@@ -9,7 +9,6 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-// eslint-disable-next-line import/no-default-export
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -1,11 +1,11 @@
-import ms from 'ms';
-import { generateRandomInteger } from 'oslo/crypto';
-import { v4 } from 'uuid';
-import { z } from 'zod';
 import { sha256String } from '@/auth/hash';
 import { sendEmail } from '@/mailer';
 import { SendAuthEmailVerificationEmail } from '@/mailer/emails/send-auth-email-verification';
 import { unauthenticatedProcedure } from '@/server/trpc';
+import ms from 'ms';
+import { generateRandomInteger } from 'oslo/crypto';
+import { v4 } from 'uuid';
+import { z } from 'zod';
 import { AUTH_EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MINUTES } from './constants';
 import { authCreateInputSchema } from './schema';
 
