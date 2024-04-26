@@ -1,10 +1,10 @@
 {
-	"phases": {
-		"setup": {
-			"nixPkgs": ["...", "infisical"]
-		},
-		"build": {
-			"cmds": ["infisical run -e prod -- npm run app:build"]
-		}
-	}
+  "phases": {
+    "setup": {
+      "nixPkgs": ["...", "infisical"]
+    },
+    "build": {
+      "cmds": ["infisical run -e prod -- npm run app:build"]
+    }
+  }
 }

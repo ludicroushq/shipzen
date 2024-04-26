@@ -11,63 +11,63 @@ import { cache } from "react";
 const adapter = new PrismaAdapter(dbAdmin.authLuciaSession, dbAdmin.user);
 
 export const lucia = new Lucia(adapter, {
-	sessionExpiresIn: new TimeSpan(90, "d"),
-	sessionCookie: {
-		name: isProd ? "__Host-lucia-session" : "lucia-session",
-		expires: false,
-		attributes: {
-			secure: isProd,
-		},
-	},
-	getUserAttributes: (attributes) => {
-		const displayName = attributes.email
-			? attributes.email.split("@")[0]
-			: "Anonymous";
-		return {
-			...attributes,
-			displayName,
-		};
-	},
+  sessionExpiresIn: new TimeSpan(90, "d"),
+  sessionCookie: {
+    name: isProd ? "__Host-lucia-session" : "lucia-session",
+    expires: false,
+    attributes: {
+      secure: isProd,
+    },
+  },
+  getUserAttributes: (attributes) => {
+    const displayName = attributes.email
+      ? attributes.email.split("@")[0]
+      : "Anonymous";
+    return {
+      ...attributes,
+      displayName,
+    };
+  },
 });
 
 declare module "lucia" {
-	interface Register {
-		Lucia: typeof lucia;
-		DatabaseUserAttributes: DatabaseUser & {
-			displayName: string;
-		};
-	}
+  interface Register {
+    Lucia: typeof lucia;
+    DatabaseUserAttributes: DatabaseUser & {
+      displayName: string;
+    };
+  }
 }
 
 export const getAuth = cache(
-	async (): Promise<{ user: User; session: Session } | null> => {
-		const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
-		if (!sessionId) {
-			return null;
-		}
+  async (): Promise<{ user: User; session: Session } | null> => {
+    const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
+    if (!sessionId) {
+      return null;
+    }
 
-		const auth = await lucia.validateSession(sessionId);
-		if (!auth.session) return null;
-		return auth;
-	},
+    const auth = await lucia.validateSession(sessionId);
+    if (!auth.session) return null;
+    return auth;
+  },
 );
 
 export const getEnhancedDb = cache(async () => {
-	const auth = await getAuth();
+  const auth = await getAuth();
 
-	const db = enhance(dbAdmin, {
-		user: auth?.user as DatabaseUser,
-	});
+  const db = enhance(dbAdmin, {
+    user: auth?.user as DatabaseUser,
+  });
 
-	return db;
+  return db;
 });
 
 export const verifyAdmin = cache(async () => {
-	const auth = await getAuth();
+  const auth = await getAuth();
 
-	if (auth?.user && auth.user.role === UserRole.ADMIN) {
-		return true;
-	}
+  if (auth?.user && auth.user.role === UserRole.ADMIN) {
+    return true;
+  }
 
-	return false;
+  return false;
 });
