@@ -1,14 +1,14 @@
-"use server";
-import { options } from "@/admin";
-import { getEnhancedDb, verifyAdmin } from "@/auth";
-import type { ActionParams, ModelName } from "@premieroctet/next-admin";
+'use server';
+import { options } from '@/admin';
+import { getEnhancedDb, verifyAdmin } from '@/auth';
+import type { ActionParams, ModelName } from '@premieroctet/next-admin';
 import {
   type SearchPaginatedResourceParams,
   deleteResourceItems,
   searchPaginatedResource,
   submitForm,
-} from "@premieroctet/next-admin/dist/actions";
-import { notFound } from "next/navigation";
+} from '@premieroctet/next-admin/dist/actions';
+import { notFound } from 'next/navigation';
 
 export const action = async (params: ActionParams, formData: FormData) => {
   const isAdmin = await verifyAdmin();

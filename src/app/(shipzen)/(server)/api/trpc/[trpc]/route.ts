@@ -1,17 +1,17 @@
-import { isDev } from "@/config/node";
-import { logger } from "@/logger";
-import { appRouter } from "@/server";
-import { createContext } from "@/server/context";
-import * as Sentry from "@sentry/nextjs";
-import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
-import { type NextRequest, NextResponse } from "next/server";
-import { verifyRequestOrigin } from "oslo/request";
+import { isDev } from '@/config/node';
+import { logger } from '@/logger';
+import { appRouter } from '@/server';
+import { createContext } from '@/server/context';
+import * as Sentry from '@sentry/nextjs';
+import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
+import { type NextRequest, NextResponse } from 'next/server';
+import { verifyRequestOrigin } from 'oslo/request';
 
 function csrfCheck(request: NextRequest) {
-  if (request.method === "GET") return;
+  if (request.method === 'GET') return;
 
-  const originHeader = request.headers.get("Origin");
-  const hostHeader = request.headers.get("Host");
+  const originHeader = request.headers.get('Origin');
+  const hostHeader = request.headers.get('Host');
   if (
     !originHeader ||
     !hostHeader ||
@@ -28,18 +28,18 @@ async function handler(request: NextRequest) {
   if (csrfError) return csrfError;
 
   const response = await fetchRequestHandler({
-    endpoint: "/api/trpc",
+    endpoint: '/api/trpc',
     req: request,
     router: appRouter,
     createContext,
     onError({ path, error }) {
       if (isDev) {
         logger.error(
-          `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
+          `❌ tRPC failed on ${path ?? '<no-path>'}: ${error.message}`,
         );
       }
 
-      if (error.code === "INTERNAL_SERVER_ERROR") {
+      if (error.code === 'INTERNAL_SERVER_ERROR') {
         Sentry.captureException(error);
       }
     },

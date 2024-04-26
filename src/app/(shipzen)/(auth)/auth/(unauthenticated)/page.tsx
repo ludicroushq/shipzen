@@ -1,5 +1,5 @@
-import { CardBody, CardHeader } from "@nextui-org/react";
-import { Auth } from "./_components/auth";
+import { CardBody, CardHeader } from '@nextui-org/react';
+import { Auth } from './_components/auth';
 
 export default function Page() {
   return (

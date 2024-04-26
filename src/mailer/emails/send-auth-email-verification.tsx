@@ -1,6 +1,6 @@
-import { CodeInline, Container, Section, Text } from "@react-email/components";
-import type { EmailProps } from "..";
-import { EmailWrapper } from "./_components/email-wrapper";
+import { CodeInline, Container, Section, Text } from '@react-email/components';
+import type { EmailProps } from '..';
+import { EmailWrapper } from './_components/email-wrapper';
 
 type SendAuthEmailVerificationProps = {
   token: string;
@@ -36,6 +36,6 @@ export function SendAuthEmailVerificationEmail(
   );
 }
 SendAuthEmailVerificationEmail.PreviewProps = {
-  token: "123456",
+  token: '123456',
 };
 export default SendAuthEmailVerificationEmail;

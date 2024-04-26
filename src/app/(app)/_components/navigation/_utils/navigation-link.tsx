@@ -5,9 +5,9 @@ import {
   type LinkProps,
   type Merge,
   NavbarItem,
-} from "@nextui-org/react";
-import { usePathname } from "next/navigation";
-import type { IconType } from "react-icons/lib";
+} from '@nextui-org/react';
+import { usePathname } from 'next/navigation';
+import type { IconType } from 'react-icons/lib';
 
 type NavigationLinkProps = {
   href: string;
@@ -29,7 +29,7 @@ export function NavigationLink(props: NavigationLinkProps) {
         isDisabled={isActive}
         size="lg"
         startContent={<Icon size="1.25em" />}
-        variant={isActive ? "flat" : "light"}
+        variant={isActive ? 'flat' : 'light'}
         {...linkProps}
       />
     </NavbarItem>

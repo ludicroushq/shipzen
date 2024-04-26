@@ -1,4 +1,4 @@
-import { Link } from "@nextui-org/react";
+import { Link } from '@nextui-org/react';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -11,7 +11,7 @@ export function Footer() {
             &copy; {year} TODO. All rights reserved.
             <br />
             <small>
-              Powered by{" "}
+              Powered by{' '}
               <Link
                 color="foreground"
                 href="https://www.shipzen.dev"

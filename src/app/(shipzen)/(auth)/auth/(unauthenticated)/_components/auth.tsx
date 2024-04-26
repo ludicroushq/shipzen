@@ -1,30 +1,30 @@
-"use client";
-import { trpcReactQuery } from "@/app/_utils/trpc/react-query";
-import { AUTH_EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MINUTES } from "@/auth/server/routers/auth/create/constants";
-import { authCreateInputSchema } from "@/auth/server/routers/auth/create/schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input } from "@nextui-org/react";
-import { setCookie } from "cookies-next";
-import ms from "ms";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
-import type { z } from "zod";
-import { errorMap } from "zod-validation-error";
-import { AUTH_VERIFICATION_CODE_COOKIE_NAME } from "../../_utils/constants";
+'use client';
+import { trpcReactQuery } from '@/app/_utils/trpc/react-query';
+import { AUTH_EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MINUTES } from '@/auth/server/routers/auth/create/constants';
+import { authCreateInputSchema } from '@/auth/server/routers/auth/create/schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button, Input } from '@nextui-org/react';
+import { setCookie } from 'cookies-next';
+import ms from 'ms';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import type { z } from 'zod';
+import { errorMap } from 'zod-validation-error';
+import { AUTH_VERIFICATION_CODE_COOKIE_NAME } from '../../_utils/constants';
 
 export function Auth() {
   const mutation = trpcReactQuery.auth.create.useMutation();
   const form = useForm<z.infer<typeof authCreateInputSchema>>({
     defaultValues: {
-      email: "",
+      email: '',
     },
     resolver: zodResolver(authCreateInputSchema, { errorMap }),
   });
   const router = useRouter();
 
   useEffect(() => {
-    form.setFocus("email");
+    form.setFocus('email');
   }, [form]);
 
   async function onSubmit(data: z.infer<typeof authCreateInputSchema>) {
@@ -36,7 +36,7 @@ export function Auth() {
       ),
       secure: true,
     });
-    router.push("/auth/verify");
+    router.push('/auth/verify');
   }
 
   return (

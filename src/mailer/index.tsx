@@ -1,10 +1,10 @@
-import { env } from "@/config/env.mjs";
-import { logger } from "@/logger";
-import { render } from "@react-email/components";
-import * as Sentry from "@sentry/nextjs";
-import { createTransport } from "nodemailer";
-import type { ComponentType } from "react";
-import { z } from "zod";
+import { env } from '@/config/env.mjs';
+import { logger } from '@/logger';
+import { render } from '@react-email/components';
+import * as Sentry from '@sentry/nextjs';
+import { createTransport } from 'nodemailer';
+import type { ComponentType } from 'react';
+import { z } from 'zod';
 
 const decodedString = z.string().transform((v) => decodeURIComponent(v));
 const schema = z.object({
@@ -15,10 +15,10 @@ const schema = z.object({
   from: decodedString,
   replyTo: decodedString.nullable(),
   secure: z
-    .enum(["true", "false"])
-    .default("false")
+    .enum(['true', 'false'])
+    .default('false')
     .nullable()
-    .transform((v) => v === "true"),
+    .transform((v) => v === 'true'),
 });
 
 const url = new URL(env.SMTP_URL);
@@ -28,9 +28,9 @@ const { host, port, user, pass, from, replyTo, secure } = schema.parse({
   port: url.port,
   user: url.username,
   pass: url.password,
-  from: url.searchParams.get("from"),
-  replyTo: url.searchParams.get("replyTo"),
-  secure: url.searchParams.get("secure"),
+  from: url.searchParams.get('from'),
+  replyTo: url.searchParams.get('replyTo'),
+  secure: url.searchParams.get('secure'),
 });
 
 export const transporter = createTransport({
@@ -69,7 +69,7 @@ export async function sendEmail<T>(
   });
 
   if (email.rejected.length > 0) {
-    Sentry.captureMessage(`Email rejected: ${email.rejected.join(", ")}`);
-    logger.error("Email rejected", email.rejected.join(", "));
+    Sentry.captureMessage(`Email rejected: ${email.rejected.join(', ')}`);
+    logger.error('Email rejected', email.rejected.join(', '));
   }
 }

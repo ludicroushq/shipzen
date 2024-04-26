@@ -1,5 +1,5 @@
-import { Button, Link } from "@nextui-org/react";
-import { BiRightArrowAlt } from "react-icons/bi";
+import { Button, Link } from '@nextui-org/react';
+import { BiRightArrowAlt } from 'react-icons/bi';
 
 export default function Home() {
   return (

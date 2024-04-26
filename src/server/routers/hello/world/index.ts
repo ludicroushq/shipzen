@@ -1,5 +1,5 @@
-import { publicProcedure } from "@/server/trpc";
-import { z } from "zod";
+import { publicProcedure } from '@/server/trpc';
+import { z } from 'zod';
 
 export const world = publicProcedure
   .output(
@@ -9,6 +9,6 @@ export const world = publicProcedure
   )
   .query(() => {
     return {
-      message: "Hello, World!",
+      message: 'Hello, World!',
     };
   });

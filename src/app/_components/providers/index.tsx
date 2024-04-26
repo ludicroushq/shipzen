@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
 import {
   trpcReactQuery,
   trpcReactQueryClient,
-} from "@/app/_utils/trpc/react-query";
-import { isDev } from "@/config/node";
-import { NextUIProvider } from "@nextui-org/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useRouter } from "next/navigation";
-import type { ReactNode } from "react";
-import { toast } from "sonner";
+} from '@/app/_utils/trpc/react-query';
+import { isDev } from '@/config/node';
+import { NextUIProvider } from '@nextui-org/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { useRouter } from 'next/navigation';
+import type { ReactNode } from 'react';
+import { toast } from 'sonner';
 
 const queryClient = new QueryClient({
   defaultOptions: {

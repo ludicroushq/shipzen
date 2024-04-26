@@ -1,5 +1,5 @@
-import { env } from "@/config/env.mjs";
-import type * as Sentry from "@sentry/nextjs";
+import { env } from '@/config/env.mjs';
+import type * as Sentry from '@sentry/nextjs';
 
 export const sentryBaseConfig:
   | Sentry.EdgeOptions

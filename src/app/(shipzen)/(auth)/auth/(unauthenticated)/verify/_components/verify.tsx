@@ -1,13 +1,13 @@
-"use client";
-import { trpcReactQuery } from "@/app/_utils/trpc/react-query";
-import { authVerifyInputSchema } from "@/auth/server/routers/auth/verify/schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
-import type { z } from "zod";
-import { errorMap } from "zod-validation-error";
+'use client';
+import { trpcReactQuery } from '@/app/_utils/trpc/react-query';
+import { authVerifyInputSchema } from '@/auth/server/routers/auth/verify/schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button, Input } from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import type { z } from 'zod';
+import { errorMap } from 'zod-validation-error';
 
 type VerifyProps = {
   code: string;
@@ -18,14 +18,14 @@ export function Verify(props: VerifyProps) {
   const form = useForm<z.infer<typeof authVerifyInputSchema>>({
     defaultValues: {
       code,
-      token: "",
+      token: '',
     },
     resolver: zodResolver(authVerifyInputSchema, { errorMap }),
   });
   const router = useRouter();
 
   useEffect(() => {
-    form.setFocus("token");
+    form.setFocus('token');
   }, [form]);
 
   async function onSubmit(data: z.infer<typeof authVerifyInputSchema>) {

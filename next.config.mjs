@@ -1,7 +1,7 @@
 // @ts-check
-import { withSentryConfig } from "@sentry/nextjs";
-import cpx from "cpx2";
-import { env } from "./src/config/env.mjs";
+import { withSentryConfig } from '@sentry/nextjs';
+import cpx from 'cpx2';
+import { env } from './src/config/env.mjs';
 
 /**
  * Next.js and Tailwind do not support symbolic links
@@ -13,18 +13,18 @@ function syncModuleToApp(name) {
     clean: true,
   });
 }
-syncModuleToApp("admin");
-syncModuleToApp("auth");
-syncModuleToApp("server");
+syncModuleToApp('admin');
+syncModuleToApp('auth');
+syncModuleToApp('server');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
   experimental: {
-    serverComponentsExternalPackages: ["@zenstackhq/runtime"],
+    serverComponentsExternalPackages: ['@zenstackhq/runtime'],
     swcPlugins: [
       [
-        "next-superjson-plugin",
+        'next-superjson-plugin',
         {
           excluded: [],
         },
@@ -47,7 +47,7 @@ export default withSentryConfig(
   {
     widenClientFileUpload: true,
     transpileClientSDK: true,
-    tunnelRoute: "/monitoring",
+    tunnelRoute: '/monitoring',
     hideSourceMaps: true,
     disableLogger: true,
   },

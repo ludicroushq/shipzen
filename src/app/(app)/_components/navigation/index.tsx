@@ -1,15 +1,15 @@
-"use client";
+'use client';
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarMenu,
   NavbarMenuToggle,
-} from "@nextui-org/react";
-import type { User } from "lucia";
-import { useState } from "react";
-import { Logo } from "../logo";
-import { NavigationItems } from "./navigation-items";
+} from '@nextui-org/react';
+import type { User } from 'lucia';
+import { useState } from 'react';
+import { Logo } from '../logo';
+import { NavigationItems } from './navigation-items';
 
 type NavigationProps = {
   user: User | undefined;
@@ -22,7 +22,7 @@ export function Navigation(props: NavigationProps) {
   return (
     <Navbar
       classNames={{
-        wrapper: "container px-8 sm:px-14 md:px-16",
+        wrapper: 'container px-8 sm:px-14 md:px-16',
       }}
       height="4.5rem"
       isMenuOpen={isMenuOpen}
@@ -45,7 +45,7 @@ export function Navigation(props: NavigationProps) {
       </NavbarMenu>
       <NavbarContent className="flex md:hidden" justify="end">
         <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         />
       </NavbarContent>
     </Navbar>

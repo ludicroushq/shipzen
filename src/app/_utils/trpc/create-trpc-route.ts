@@ -1,6 +1,6 @@
-import { createCaller } from "@/server";
-import { createContext } from "@/server/context";
-import type { NextResponse } from "next/server";
+import { createCaller } from '@/server';
+import { createContext } from '@/server/context';
+import type { NextResponse } from 'next/server';
 
 export async function createTRPCRoute(
   request: Request | NextResponse,

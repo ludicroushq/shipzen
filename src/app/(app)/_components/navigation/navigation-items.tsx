@@ -6,10 +6,10 @@ import {
   DropdownMenu,
   DropdownTrigger,
   NavbarItem,
-} from "@nextui-org/react";
-import type { User } from "lucia";
-import { BiChevronDown, BiHomeAlt2, BiLogIn } from "react-icons/bi";
-import { NavigationLink } from "./_utils/navigation-link";
+} from '@nextui-org/react';
+import type { User } from 'lucia';
+import { BiChevronDown, BiHomeAlt2, BiLogIn } from 'react-icons/bi';
+import { NavigationLink } from './_utils/navigation-link';
 
 type NavigationItemsProps = {
   user: User | undefined;
@@ -51,7 +51,7 @@ export function NavigationItems(props: NavigationItemsProps) {
               <span className="truncate md:max-w-32">{displayName}</span>
             </Button>
           </DropdownTrigger>
-          <DropdownMenu aria-label="Profile" disabledKeys={["profile"]}>
+          <DropdownMenu aria-label="Profile" disabledKeys={['profile']}>
             <DropdownItem className="gap-2" key="profile" showDivider>
               <p className="font-semibold">Signed in as</p>
               <p className="font-semibold">{user.email}</p>

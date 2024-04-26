@@ -1,19 +1,19 @@
-import { isProd } from "@/config/node";
-import { dbAdmin } from "@/prisma";
-import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
-import { type User as DatabaseUser, UserRole } from "@prisma/client";
-import { enhance } from "@zenstackhq/runtime";
-import type { Session, User } from "lucia";
-import { Lucia, TimeSpan } from "lucia";
-import { cookies } from "next/headers";
-import { cache } from "react";
+import { isProd } from '@/config/node';
+import { dbAdmin } from '@/prisma';
+import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
+import { type User as DatabaseUser, UserRole } from '@prisma/client';
+import { enhance } from '@zenstackhq/runtime';
+import type { Session, User } from 'lucia';
+import { Lucia, TimeSpan } from 'lucia';
+import { cookies } from 'next/headers';
+import { cache } from 'react';
 
 const adapter = new PrismaAdapter(dbAdmin.authLuciaSession, dbAdmin.user);
 
 export const lucia = new Lucia(adapter, {
-  sessionExpiresIn: new TimeSpan(90, "d"),
+  sessionExpiresIn: new TimeSpan(90, 'd'),
   sessionCookie: {
-    name: isProd ? "__Host-lucia-session" : "lucia-session",
+    name: isProd ? '__Host-lucia-session' : 'lucia-session',
     expires: false,
     attributes: {
       secure: isProd,
@@ -21,8 +21,8 @@ export const lucia = new Lucia(adapter, {
   },
   getUserAttributes: (attributes) => {
     const displayName = attributes.email
-      ? attributes.email.split("@")[0]
-      : "Anonymous";
+      ? attributes.email.split('@')[0]
+      : 'Anonymous';
     return {
       ...attributes,
       displayName,
@@ -30,7 +30,7 @@ export const lucia = new Lucia(adapter, {
   },
 });
 
-declare module "lucia" {
+declare module 'lucia' {
   interface Register {
     Lucia: typeof lucia;
     DatabaseUserAttributes: DatabaseUser & {
