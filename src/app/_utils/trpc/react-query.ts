@@ -1,8 +1,8 @@
 'use client';
+import { baseUrl } from '@/config/app';
+import type { AppRouter } from '@/server';
 import { httpBatchLink } from '@trpc/client';
 import { createTRPCReact } from '@trpc/react-query';
-import type { AppRouter } from '@/server';
-import { baseUrl } from '@/config/app';
 import { loggerLink, transformer } from './shared';
 
 const links = [

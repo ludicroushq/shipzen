@@ -1,11 +1,11 @@
-import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
-import { NextResponse, type NextRequest } from 'next/server';
-import { verifyRequestOrigin } from 'oslo/request';
-import * as Sentry from '@sentry/nextjs';
-import { appRouter } from '@/server';
-import { createContext } from '@/server/context';
 import { isDev } from '@/config/node';
 import { logger } from '@/logger';
+import { appRouter } from '@/server';
+import { createContext } from '@/server/context';
+import * as Sentry from '@sentry/nextjs';
+import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
+import { type NextRequest, NextResponse } from 'next/server';
+import { verifyRequestOrigin } from 'oslo/request';
 
 function csrfCheck(request: NextRequest) {
   if (request.method === 'GET') return;

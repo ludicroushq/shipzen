@@ -1,10 +1,10 @@
+import { env } from '@/config/env.mjs';
+import { logger } from '@/logger';
+import { render } from '@react-email/components';
+import * as Sentry from '@sentry/nextjs';
 import { createTransport } from 'nodemailer';
 import type { ComponentType } from 'react';
-import * as Sentry from '@sentry/nextjs';
-import { render } from '@react-email/components';
 import { z } from 'zod';
-import { logger } from '@/logger';
-import { env } from '@/config/env.mjs';
 
 const decodedString = z.string().transform((v) => decodeURIComponent(v));
 const schema = z.object({

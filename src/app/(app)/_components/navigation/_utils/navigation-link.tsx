@@ -1,15 +1,21 @@
-import { Button, Link, NavbarItem } from '@nextui-org/react';
+import {
+  Button,
+  type ButtonProps,
+  Link,
+  type LinkProps,
+  type Merge,
+  NavbarItem,
+} from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
-import type { PropsWithChildren } from 'react';
 import type { IconType } from 'react-icons/lib';
 
 type NavigationLinkProps = {
   href: string;
   Icon: IconType;
-} & PropsWithChildren;
+} & Merge<LinkProps, ButtonProps>;
 
 export function NavigationLink(props: NavigationLinkProps) {
-  const { href, children, Icon } = props;
+  const { href, Icon, ...linkProps } = props;
   const pathname = usePathname();
   const isActive = pathname === href;
 
@@ -24,9 +30,8 @@ export function NavigationLink(props: NavigationLinkProps) {
         size="lg"
         startContent={<Icon size="1.25em" />}
         variant={isActive ? 'flat' : 'light'}
-      >
-        {children}
-      </Button>
+        {...linkProps}
+      />
     </NavbarItem>
   );
 }

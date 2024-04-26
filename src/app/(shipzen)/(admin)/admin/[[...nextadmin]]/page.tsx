@@ -1,12 +1,11 @@
+import schema from '@/../prisma/json-schema/json-schema.json';
+import { options } from '@/admin';
+import { getEnhancedDb, verifyAdmin } from '@/auth';
 import { NextAdmin } from '@premieroctet/next-admin';
 import { getPropsFromParams } from '@premieroctet/next-admin/dist/appRouter';
 import { notFound } from 'next/navigation';
-import { options } from '@/admin';
-import { getEnhancedDb, verifyAdmin } from '@/auth';
-import schema from '@/../prisma/json-schema/json-schema.json';
 import { action, deleteAction, searchPaginatedResourceAction } from './actions';
 
-// eslint-disable-next-line import/no-default-export
 export default async function AdminPage({
   params,
   searchParams,

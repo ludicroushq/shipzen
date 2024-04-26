@@ -6,8 +6,8 @@ import {
   NavbarMenu,
   NavbarMenuToggle,
 } from '@nextui-org/react';
-import { useState } from 'react';
 import type { User } from 'lucia';
+import { useState } from 'react';
 import { Logo } from '../logo';
 import { NavigationItems } from './navigation-items';
 

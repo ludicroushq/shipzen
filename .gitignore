@@ -43,3 +43,6 @@ yarn-error.log*
 # prisma
 prisma/json-schema
 prisma/schema.prisma
+
+# cspell
+.cspellcache

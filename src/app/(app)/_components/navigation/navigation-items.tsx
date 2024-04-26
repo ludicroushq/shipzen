@@ -7,8 +7,8 @@ import {
   DropdownTrigger,
   NavbarItem,
 } from '@nextui-org/react';
-import { BiChevronDown, BiHomeAlt2, BiLogIn } from 'react-icons/bi';
 import type { User } from 'lucia';
+import { BiChevronDown, BiHomeAlt2, BiLogIn } from 'react-icons/bi';
 import { NavigationLink } from './_utils/navigation-link';
 
 type NavigationItemsProps = {

@@ -14,11 +14,11 @@ export function SendAuthEmailVerificationEmail(
     <EmailWrapper {...props} previewText="Your auth code for TODO.">
       <Container>
         <Section>
-          <Text className="mt-4 text-center text-2xl font-bold">
+          <Text className="mt-4 text-center font-bold text-2xl">
             Your Auth Code for TODO
           </Text>
         </Section>
-        <Section className="rounded-lg border border-solid border-[#eaeaea] p-4">
+        <Section className="rounded-lg border border-[#eaeaea] border-solid p-4">
           <Text className="text-lg">Hey there!</Text>
           <Text className="text-lg">Here is the auth code you requested:</Text>
           <Section className="rounded bg-gray-100 px-4 py-4 text-center text-xl">
@@ -27,7 +27,7 @@ export function SendAuthEmailVerificationEmail(
           <Text className="text-lg">
             Please enter the code on the website to finish signing in.
           </Text>
-          <Text className="my-8 text-sm italic text-gray-600">
+          <Text className="my-8 text-gray-600 text-sm italic">
             If you did not request this, you may safely ignore this email.
           </Text>
         </Section>
@@ -38,5 +38,4 @@ export function SendAuthEmailVerificationEmail(
 SendAuthEmailVerificationEmail.PreviewProps = {
   token: '123456',
 };
-// eslint-disable-next-line import/no-default-export
 export default SendAuthEmailVerificationEmail;
