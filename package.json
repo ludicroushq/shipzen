@@ -6,6 +6,7 @@
     "app:build": "wireit",
     "app:dev": "wireit",
     "app:start": "wireit",
+    "build": "wireit",
     "ci:test": "wireit",
     "dev": "wireit",
     "lint": "wireit",
@@ -75,6 +76,11 @@
     "version": "0.0.8"
   },
   "wireit": {
+    "build": {
+      "dependencies": [
+        "app:build"
+      ]
+    },
     "dev": {
       "dependencies": ["app:dev"]
     },
