@@ -77,9 +77,7 @@
   },
   "wireit": {
     "build": {
-      "dependencies": [
-        "app:build"
-      ]
+      "dependencies": ["app:build"]
     },
     "dev": {
       "dependencies": ["app:dev"]

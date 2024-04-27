@@ -12,6 +12,7 @@ datasource db {
   extensions = [citext]
 
   url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL")
 }
 
 plugin zod {
