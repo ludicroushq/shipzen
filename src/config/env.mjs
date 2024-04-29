@@ -6,6 +6,10 @@ import { z } from 'zod';
 export const env = createEnv({
   server: {
     DATABASE_URL: z.string().url(),
+    IS_STANDALONE: z
+      .string()
+      .optional()
+      .transform((s) => s === 'true'),
     SENTRY_ORG: z.string(),
     SENTRY_PROJECT: z.string(),
     SENTRY_URL: z.string().url(),

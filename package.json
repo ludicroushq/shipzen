@@ -87,7 +87,7 @@
       "dependencies": ["zenstack:generate"]
     },
     "spellcheck": {
-      "command": "cspell lint . --quiet --cache"
+      "command": "cspell lint . --quiet"
     },
     "start": {
       "dependencies": ["app:start"]
@@ -106,7 +106,8 @@
     },
     "app:build": {
       "command": "next build",
-      "dependencies": ["zenstack:generate"]
+      "dependencies": ["zenstack:generate"],
+      "output": [".next/**/*"]
     },
     "app:start": {
       "command": "next start -p 3000",
@@ -120,7 +121,7 @@
       "dependencies": ["zenstack:generate"]
     },
     "ci:spellcheck": {
-      "command": "cspell lint . --quiet --cache"
+      "command": "cspell lint . --quiet"
     },
     "ci:typecheck": {
       "command": "tsc --noEmit",
