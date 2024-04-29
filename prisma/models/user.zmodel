@@ -16,7 +16,7 @@ model User extends Base {
 }
 
 abstract model UserEntity extends Base {
-  userId String
+  userId String @default(auth().id)
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@allow('create', userId == auth().id)
