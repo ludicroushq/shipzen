@@ -1,0 +1,13 @@
+{
+  "pre-commit": {
+    "parallel": true,
+    "commands": {
+      "lint": {
+        "run": "npm run lint"
+      },
+      "spellcheck": {
+        "run": "npm run spellcheck"
+      }
+    }
+  }
+}
