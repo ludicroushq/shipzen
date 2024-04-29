@@ -127,7 +127,9 @@
       "dependencies": ["zenstack:generate"]
     },
     "zenstack:generate": {
-      "command": "zenstack generate"
+      "command": "zenstack generate",
+      "files": ["prisma/**/*", "schema.zmodel"],
+      "output": ["node_modules/.prisma/**/*", "node_modules/.zenstack/**/*"]
     }
   }
 }
