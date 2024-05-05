@@ -1,5 +1,4 @@
 {
-  "extends": "@vercel/style-guide/typescript/node20",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

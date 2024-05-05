@@ -19,6 +19,7 @@ syncModuleToApp('server');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: env.IS_STANDALONE ? 'standalone' : undefined,
   poweredByHeader: false,
   experimental: {
     serverComponentsExternalPackages: ['@zenstackhq/runtime'],

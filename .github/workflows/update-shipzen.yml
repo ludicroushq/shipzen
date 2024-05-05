@@ -1,0 +1,10 @@
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  update-shipzen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ludicroushq/shipzen-action@v0

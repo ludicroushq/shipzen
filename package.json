@@ -6,6 +6,7 @@
     "app:build": "wireit",
     "app:dev": "wireit",
     "app:start": "wireit",
+    "build": "wireit",
     "ci:test": "wireit",
     "dev": "wireit",
     "lint": "wireit",
@@ -58,10 +59,10 @@
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
     "@types/uuid": "^9.0.8",
-    "@vercel/style-guide": "^6.0.0",
     "autoprefixer": "^10.4.19",
     "cpx2": "^7.0.1",
     "cspell": "^8.7.0",
+    "lefthook": "^1.6.10",
     "next-superjson-plugin": "^0.6.3",
     "postcss": "^8.4.38",
     "prisma": "^5.12.1",
@@ -72,9 +73,12 @@
     "zenstack": "^2.0.0"
   },
   "shipzen": {
-    "version": "0.0.7"
+    "version": "0.0.8"
   },
   "wireit": {
+    "build": {
+      "dependencies": ["app:build"]
+    },
     "dev": {
       "dependencies": ["app:dev"]
     },
@@ -83,7 +87,7 @@
       "dependencies": ["zenstack:generate"]
     },
     "spellcheck": {
-      "command": "cspell lint . --quiet --cache"
+      "command": "cspell lint . --quiet"
     },
     "start": {
       "dependencies": ["app:start"]
@@ -102,28 +106,31 @@
     },
     "app:build": {
       "command": "next build",
-      "dependencies": ["zenstack:generate"]
+      "dependencies": ["zenstack:generate"],
+      "output": [".next/**/*"]
     },
     "app:start": {
       "command": "next start -p 3000",
       "service": true
     },
     "ci:test": {
-      "dependencies": ["ci:lint", "ci:typecheck"]
+      "dependencies": ["ci:lint", "ci:spellcheck", "ci:typecheck"]
     },
     "ci:lint": {
       "command": "biome check .",
       "dependencies": ["zenstack:generate"]
     },
     "ci:spellcheck": {
-      "command": "cspell lint . --quiet --cache"
+      "command": "cspell lint . --quiet"
     },
     "ci:typecheck": {
       "command": "tsc --noEmit",
       "dependencies": ["zenstack:generate"]
     },
     "zenstack:generate": {
-      "command": "zenstack generate"
+      "command": "zenstack generate",
+      "files": ["prisma/**/*", "schema.zmodel"],
+      "output": ["node_modules/.prisma/**/*", "node_modules/.zenstack/**/*"]
     }
   }
 }
