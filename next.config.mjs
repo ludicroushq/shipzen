@@ -41,9 +41,6 @@ export default withSentryConfig(
   nextConfig,
   {
     silent: true,
-    org: env.SENTRY_ORG,
-    project: env.SENTRY_PROJECT,
-    url: env.SENTRY_URL,
   },
   {
     widenClientFileUpload: true,

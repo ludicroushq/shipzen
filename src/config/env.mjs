@@ -10,9 +10,6 @@ export const env = createEnv({
       .string()
       .optional()
       .transform((s) => s === 'true'),
-    SENTRY_ORG: z.string(),
-    SENTRY_PROJECT: z.string(),
-    SENTRY_URL: z.string().url(),
     SMTP_URL: z.string().url(),
   },
   client: {
