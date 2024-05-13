@@ -8,6 +8,7 @@ import {
   searchPaginatedResource,
   submitForm,
 } from '@premieroctet/next-admin/dist/actions';
+import type { PrismaClient } from '@prisma/client';
 import { notFound } from 'next/navigation';
 
 export const action = async (params: ActionParams, formData: FormData) => {
@@ -15,7 +16,10 @@ export const action = async (params: ActionParams, formData: FormData) => {
   if (!isAdmin) return notFound();
 
   const db = await getEnhancedDb();
-  return submitForm({ ...params, options, prisma: db }, formData);
+  return submitForm(
+    { ...params, options, prisma: db as PrismaClient },
+    formData,
+  );
 };
 
 export const deleteAction = async (
@@ -27,7 +31,7 @@ export const deleteAction = async (
 
   const db = await getEnhancedDb();
 
-  return deleteResourceItems(db, model, ids);
+  return deleteResourceItems(db as PrismaClient, model, ids);
 };
 
 export const searchPaginatedResourceAction = async (
@@ -40,7 +44,7 @@ export const searchPaginatedResourceAction = async (
   const db = await getEnhancedDb();
 
   return searchPaginatedResource(
-    { ...actionParams, options, prisma: db },
+    { ...actionParams, options, prisma: db as PrismaClient },
     params,
   );
 };
