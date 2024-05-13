@@ -1,4 +1,4 @@
 generator jsonSchema {
-  provider = "prisma-json-schema-generator"
-  includeRequiredFields = "true"
+	provider = "prisma-json-schema-generator"
+	includeRequiredFields = "true"
 }

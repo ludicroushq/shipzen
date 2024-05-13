@@ -1,7 +1,7 @@
-import * as Sentry from '@sentry/nextjs';
-import { sentryBaseConfig } from './sentry.base.config';
+import * as Sentry from "@sentry/nextjs";
+import { sentryBaseConfig } from "./sentry.base.config";
 
 Sentry.init({
-  ...sentryBaseConfig,
-  tracesSampleRate: 0,
+	...sentryBaseConfig,
+	tracesSampleRate: 0,
 });
