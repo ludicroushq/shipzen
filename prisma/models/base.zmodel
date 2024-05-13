@@ -1,13 +1,13 @@
-import 'user'
+import "user"
 
 abstract model Base {
-  id        String    @id @default(uuid())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime? @omit
+	id        String    @id @default(uuid())
+	createdAt DateTime  @default(now())
+	updatedAt DateTime  @updatedAt
+	deletedAt DateTime? @omit
 
-  @@deny('read', deletedAt != null)
-  @@deny('delete', true)
+	@@deny("read", deletedAt != null)
+	@@deny("delete", true)
 
-  @@allow('all', auth().role == ADMIN)
+	@@allow("all", auth().role == ADMIN)
 }

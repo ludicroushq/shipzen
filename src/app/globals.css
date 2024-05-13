@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .container {
-    @apply max-w-[64rem];
-  }
+	.container {
+		@apply max-w-[64rem];
+	}
 }

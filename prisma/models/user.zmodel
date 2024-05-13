@@ -2,31 +2,31 @@ import "base"
 import "../../src/auth/schema"
 
 enum UserRole {
-  USER
-  ADMIN
+	USER
+	ADMIN
 }
 
 model User extends Base {
-  email             String             @unique @db.Citext @email @trim @lower
-  role              UserRole           @default(USER) @deny('read,update', auth().role != ADMIN)
+	email             String             @unique @db.Citext @email @trim @lower
+	role              UserRole           @default(USER) @deny("read,update", auth().role != ADMIN)
 
-  authLuciaSessions AuthLuciaSession[]
+	authLuciaSessions AuthLuciaSession[]
 
-  @@allow('read', auth() == this)
+	@@allow("read", auth() == this)
 }
 
 abstract model UserEntity extends Base {
-  userId String @default(auth().id)
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+	userId String @default(auth().id)
+	user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@allow('create', userId == auth().id)
-  @@allow('update', userId == auth().id && future().userId == auth().id)
+	@@allow("create", userId == auth().id)
+	@@allow("update", userId == auth().id && future().userId == auth().id)
 }
 
 abstract model PrivateUserEntity extends UserEntity {
-  @@allow('read', userId == auth().id)
+	@@allow("read", userId == auth().id)
 }
 
 abstract model PublicUserEntity extends UserEntity {
-  @@allow('read', true)
+	@@allow("read", true)
 }
