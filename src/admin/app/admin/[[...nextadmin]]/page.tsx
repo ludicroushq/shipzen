@@ -3,6 +3,7 @@ import { options } from '@/admin';
 import { getEnhancedDb, verifyAdmin } from '@/auth';
 import { NextAdmin } from '@premieroctet/next-admin';
 import { getPropsFromParams } from '@premieroctet/next-admin/dist/appRouter';
+import type { PrismaClient } from '@prisma/client';
 import { notFound } from 'next/navigation';
 import { action, deleteAction, searchPaginatedResourceAction } from './actions';
 
@@ -23,7 +24,7 @@ export default async function AdminPage({
     params: nextadmin,
     searchParams,
     options,
-    prisma: db,
+    prisma: db as PrismaClient,
     schema,
     action,
     deleteAction,

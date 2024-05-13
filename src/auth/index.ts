@@ -1,5 +1,5 @@
 import { isProd } from '@/config/node';
-import { dbAdmin } from '@/prisma';
+import { _prisma, dbAdmin } from '@/prisma';
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 import { type User as DatabaseUser, UserRole } from '@prisma/client';
 import { enhance } from '@zenstackhq/runtime';
@@ -55,7 +55,7 @@ export const getAuth = cache(
 export const getEnhancedDb = cache(async () => {
   const auth = await getAuth();
 
-  const db = enhance(dbAdmin, {
+  const db = enhance(_prisma, {
     user: auth?.user as DatabaseUser,
   });
 
