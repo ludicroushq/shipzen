@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { enhance } from '@zenstackhq/runtime';
 
-const prisma = new PrismaClient();
+export const _prisma = new PrismaClient();
 
-export const dbAdmin = enhance(prisma, undefined, { kinds: [] });
+export const dbAdmin = enhance(_prisma, undefined, { kinds: [] });
