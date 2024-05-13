@@ -15,6 +15,15 @@
 			},
 			"nursery": {
 				"useSortedClasses": "error"
+			},
+			"style": {
+				"useFilenamingConvention": {
+					"level": "error",
+					"options": {
+						"filenameCases": ["kebab-case"],
+						"strictCase": true
+					}
+				}
 			}
 		}
 	},
