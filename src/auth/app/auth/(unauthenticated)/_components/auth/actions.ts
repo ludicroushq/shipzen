@@ -1,24 +1,20 @@
+"use server";
+
+import { AUTH_EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MINUTES } from "@/auth/constants";
 import { sha256String } from "@/auth/hash";
 import { sendEmail } from "@/mailer";
-import { SendAuthEmailVerificationEmail } from "@/mailer/emails/send-auth-email-verification";
-import { unauthenticatedProcedure } from "@/server/trpc";
+import SendAuthEmailVerificationEmail from "@/mailer/emails/send-auth-email-verification";
+import { unauthenticatedActionClient } from "@/server/safe-action";
 import ms from "ms";
+import { redirect } from "next/navigation";
 import { generateRandomInteger } from "oslo/crypto";
 import { v4 } from "uuid";
-import { z } from "zod";
-import { AUTH_EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MINUTES } from "./constants";
-import { authCreateInputSchema } from "./schema";
+import { createAuthInputSchema } from "./schemas";
 
-export const create = unauthenticatedProcedure
-	.input(authCreateInputSchema)
-	.output(
-		z.object({
-			code: z.string(),
-		}),
-	)
-	.mutation(async ({ input, ctx }) => {
-		const { dbAdmin } = ctx;
-		const { email } = input;
+export const createAuthAction = unauthenticatedActionClient(
+	createAuthInputSchema,
+	async (data, { dbAdmin }) => {
+		const { email } = data;
 
 		const token = Array.from(Array(6))
 			.map(() => generateRandomInteger(10))
@@ -50,5 +46,6 @@ export const create = unauthenticatedProcedure
 			},
 		);
 
-		return { code };
-	});
+		return redirect(`/auth/verify?code=${code}`);
+	},
+);

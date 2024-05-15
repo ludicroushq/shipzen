@@ -1,13 +1,12 @@
-import { AUTH_EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MINUTES } from "@/auth/server/routers/auth/create/constants";
+"use client";
+import { AUTH_EMAIL_VERIFICATION_TOKEN_EXPIRES_IN_MINUTES } from "@/auth/constants";
 import { Button, CardBody, CardHeader, Link } from "@nextui-org/react";
-import { getCookie } from "cookies-next";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { AUTH_VERIFICATION_CODE_COOKIE_NAME } from "../../_utils/constants";
+import { redirect, useSearchParams } from "next/navigation";
 import { Verify } from "./_components/verify";
 
 export default function Page() {
-	const code = getCookie(AUTH_VERIFICATION_CODE_COOKIE_NAME, { cookies });
+	const searchParams = useSearchParams();
+	const code = searchParams.get("code");
 	if (!code) redirect("/auth?toast=error:The auth timed out. Please try again");
 
 	return (

@@ -1,19 +1,20 @@
-import { createTRPCRoute } from "@/app/_utils/trpc/create-trpc-route";
+import { getAuth, lucia } from "@/auth";
 import { baseUrl } from "@/config/app";
-import * as Sentry from "@sentry/nextjs";
-import { type NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
-	const headers = new Headers();
-	const trpcRoute = await createTRPCRoute(request, headers);
+export async function GET() {
+	const auth = await getAuth();
 
-	try {
-		await trpcRoute.auth.destroy();
-	} catch (err) {
-		Sentry.captureException(err);
+	if (auth) {
+		await lucia.invalidateSession(auth.session.id);
+		const sessionCookie = lucia.createBlankSessionCookie();
+		cookies().set(
+			sessionCookie.name,
+			sessionCookie.value,
+			sessionCookie.attributes,
+		);
 	}
 
-	return NextResponse.redirect(baseUrl, {
-		headers,
-	});
+	return NextResponse.redirect(baseUrl);
 }
