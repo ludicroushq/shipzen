@@ -11,10 +11,21 @@
 		"rules": {
 			"recommended": true,
 			"correctness": {
-				"useHookAtTopLevel": "error"
+				"useHookAtTopLevel": "error",
+				"noUnusedImports": "error",
+				"noUnusedVariables": "error"
 			},
 			"nursery": {
 				"useSortedClasses": "error"
+			},
+			"style": {
+				"useFilenamingConvention": {
+					"level": "error",
+					"options": {
+						"filenameCases": ["kebab-case"],
+						"strictCase": true
+					}
+				}
 			}
 		}
 	},
