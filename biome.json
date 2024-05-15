@@ -11,7 +11,8 @@
 		"rules": {
 			"recommended": true,
 			"correctness": {
-				"useHookAtTopLevel": "error"
+				"useHookAtTopLevel": "error",
+				"noUnusedImports": "error"
 			},
 			"nursery": {
 				"useSortedClasses": "error"
