@@ -15,7 +15,7 @@ export function SafeActionError(props: SafeActionErrorProps) {
 	if (!errorMessage) return null;
 
 	return (
-		<Card className="border border-danger-200 bg-danger-100 text-foreground">
+		<Card className="border border-danger-200 bg-danger-100 text-foreground text-sm">
 			<CardBody>{errorMessage}</CardBody>
 		</Card>
 	);
