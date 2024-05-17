@@ -7,7 +7,7 @@ enum UserRole {
 }
 
 model User extends Base {
-	email             String             @unique @db.Citext @email @trim @lower
+	email             String             @unique @db.Citext @email @trim @lower @length(min: 1)
 	role              UserRole           @default(USER) @deny("read,update", auth().role != ADMIN)
 
 	authLuciaSessions AuthLuciaSession[]
