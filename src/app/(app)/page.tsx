@@ -1,4 +1,5 @@
-import { Button, Link } from "@nextui-org/react";
+import { signInAction } from "@/auth/actions";
+import { Button } from "@nextui-org/react";
 import { BiRightArrowAlt } from "react-icons/bi";
 
 export default function Home() {
@@ -8,18 +9,17 @@ export default function Home() {
 				<center>
 					<h1>TODO</h1>
 					<p>TODO</p>
-					<p>
+					<form action={signInAction}>
 						<Button
-							as={Link}
 							className="bg-foreground text-background"
 							color="default"
 							endContent={<BiRightArrowAlt />}
-							href="/auth"
+							type="submit"
 							size="lg"
 						>
 							Get Started
 						</Button>
-					</p>
+					</form>
 				</center>
 			</div>
 		</section>

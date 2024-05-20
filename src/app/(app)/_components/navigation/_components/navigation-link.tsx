@@ -10,7 +10,6 @@ import { usePathname } from "next/navigation";
 import type { IconType } from "react-icons/lib";
 
 type NavigationLinkProps = {
-	href: string;
 	Icon: IconType;
 } & Merge<LinkProps, ButtonProps>;
 
@@ -22,7 +21,7 @@ export function NavigationLink(props: NavigationLinkProps) {
 	return (
 		<NavbarItem>
 			<Button
-				as={Link}
+				as={href ? Link : undefined}
 				color="default"
 				fullWidth
 				href={href}

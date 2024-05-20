@@ -1,4 +1,4 @@
-import { getAuth } from "@/auth";
+import { auth } from "@/auth";
 import type { Metadata } from "next";
 import { Footer } from "./_components/footer";
 import { Navigation } from "./_components/navigation";
@@ -13,10 +13,10 @@ export default async function Layout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const auth = await getAuth();
+	const session = await auth();
 	return (
 		<div className="flex h-full flex-col">
-			<Navigation user={auth?.user} />
+			<Navigation session={session} />
 			<main className="flex-grow">{children}</main>
 			<Footer />
 		</div>

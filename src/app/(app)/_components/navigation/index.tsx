@@ -6,17 +6,17 @@ import {
 	NavbarMenu,
 	NavbarMenuToggle,
 } from "@nextui-org/react";
-import type { User } from "lucia";
+import type { Session } from "next-auth";
 import { useState } from "react";
 import { Logo } from "../logo";
 import { NavigationItems } from "./navigation-items";
 
 type NavigationProps = {
-	user: User | undefined;
+	session: Session | null;
 };
 
 export function Navigation(props: NavigationProps) {
-	const { user } = props;
+	const { session } = props;
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
@@ -37,11 +37,11 @@ export function Navigation(props: NavigationProps) {
 			</NavbarContent>
 
 			<NavbarContent className="hidden md:flex" justify="end">
-				<NavigationItems user={user} />
+				<NavigationItems session={session} />
 			</NavbarContent>
 
 			<NavbarMenu>
-				<NavigationItems user={user} />
+				<NavigationItems session={session} />
 			</NavbarMenu>
 			<NavbarContent className="flex md:hidden" justify="end">
 				<NavbarMenuToggle

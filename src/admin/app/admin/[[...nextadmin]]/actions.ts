@@ -1,6 +1,6 @@
 "use server";
 import { options } from "@/admin";
-import { getEnhancedDb, verifyAdmin } from "@/auth";
+import { auth, authDb } from "@/auth";
 import type { ActionParams, ModelName } from "@premieroctet/next-admin";
 import {
 	type SearchPaginatedResourceParams,
@@ -12,10 +12,10 @@ import type { PrismaClient } from "@prisma/client";
 import { notFound } from "next/navigation";
 
 export const action = async (params: ActionParams, formData: FormData) => {
-	const isAdmin = await verifyAdmin();
-	if (!isAdmin) return notFound();
+	const session = await auth();
+	if (!session?.user.isAdmin) return notFound();
 
-	const db = await getEnhancedDb();
+	const db = await authDb();
 	return submitForm(
 		{ ...params, options, prisma: db as PrismaClient },
 		formData,
@@ -26,10 +26,10 @@ export const deleteAction = async (
 	model: ModelName,
 	ids: string[] | number[],
 ) => {
-	const isAdmin = await verifyAdmin();
-	if (!isAdmin) return notFound();
+	const session = await auth();
+	if (!session?.user.isAdmin) return notFound();
 
-	const db = await getEnhancedDb();
+	const db = await authDb();
 
 	return deleteResourceItems(db as PrismaClient, model, ids);
 };
@@ -38,10 +38,10 @@ export const searchPaginatedResourceAction = async (
 	actionParams: ActionParams,
 	params: SearchPaginatedResourceParams,
 ) => {
-	const isAdmin = await verifyAdmin();
-	if (!isAdmin) return notFound();
+	const session = await auth();
+	if (!session?.user.isAdmin) return notFound();
 
-	const db = await getEnhancedDb();
+	const db = await authDb();
 
 	return searchPaginatedResource(
 		{ ...actionParams, options, prisma: db as PrismaClient },
