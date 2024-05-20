@@ -1,6 +1,6 @@
 import schema from "@/../prisma/json-schema/json-schema.json";
 import { options } from "@/admin";
-import { getEnhancedDb, verifyAdmin } from "@/auth";
+import { auth, authDb } from "@/auth";
 import { NextAdmin } from "@premieroctet/next-admin";
 import { getPropsFromParams } from "@premieroctet/next-admin/dist/appRouter";
 import type { PrismaClient } from "@prisma/client";
@@ -15,10 +15,10 @@ export default async function AdminPage({
 	searchParams: Record<string, string | string[] | undefined> | undefined;
 }) {
 	const { nextadmin } = params;
-	const isAdmin = await verifyAdmin();
-	if (!isAdmin) return notFound();
+	const session = await auth();
+	if (!session?.user.isAdmin) return notFound();
 
-	const db = await getEnhancedDb();
+	const db = await authDb();
 
 	const props = await getPropsFromParams({
 		params: nextadmin,

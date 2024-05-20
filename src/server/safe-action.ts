@@ -1,6 +1,6 @@
 "use server";
 import { ActionError } from "@/app/_components/safe-action-error/action-error";
-import { getAuth, getEnhancedDb } from "@/auth";
+import { auth, authDb } from "@/auth";
 import { logger } from "@/logger";
 import { dbAdmin } from "@/prisma";
 import * as Sentry from "@sentry/nextjs";
@@ -27,7 +27,7 @@ const sharedActionClientOpts: Partial<SafeClientOpts<unknown, unknown>> = {
 export const actionClient = createSafeActionClient({
 	...sharedActionClientOpts,
 	async middleware() {
-		const db = await getEnhancedDb();
+		const db = await authDb();
 
 		return { db, dbAdmin };
 	},
@@ -35,25 +35,25 @@ export const actionClient = createSafeActionClient({
 export const authenticatedActionClient = createSafeActionClient({
 	...sharedActionClientOpts,
 	async middleware() {
-		const auth = await getAuth();
-		if (!auth) {
+		const session = await auth();
+		if (!session) {
 			throw new Error("Unauthorized");
 		}
 
-		const db = await getEnhancedDb();
+		const db = await authDb();
 
-		return { auth, db, dbAdmin };
+		return { auth: session, db, dbAdmin };
 	},
 });
 export const unauthenticatedActionClient = createSafeActionClient({
 	...sharedActionClientOpts,
 	async middleware() {
-		const auth = await getAuth();
-		if (auth) {
+		const session = await auth();
+		if (session) {
 			throw new Error("Unauthorized");
 		}
 
-		const db = await getEnhancedDb();
+		const db = await authDb();
 
 		return { db, dbAdmin };
 	},

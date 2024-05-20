@@ -1,13 +1,9 @@
 import "user"
 
 abstract model Base {
-	id        String    @id @default(uuid())
-	createdAt DateTime  @default(now())
-	updatedAt DateTime  @updatedAt
-	deletedAt DateTime? @omit
-
-	@@deny("read", deletedAt != null)
-	@@deny("delete", true)
+	id        String   @id @default(uuid())
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
 
 	@@allow("all", auth().role == ADMIN)
 }

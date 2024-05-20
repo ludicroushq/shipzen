@@ -1,20 +1,35 @@
 import "../../prisma/models/user"
 import "../../prisma/models/base"
 
-model AuthEmailVerification extends Base {
-	email     String    @db.Citext @email @trim @lower
-	codeHash  String
-	tokenHash String
+model Account extends Base {
+	userId            String
+	type              String
+	provider          String
+	providerAccountId String
+	refresh_token     String? @map("refreshToken")
+	access_token      String? @map("accessToken")
+	expires_at        Int?    @map("expiresAt")
+	token_type        String? @map("tokenType")
+	scope             String?
+	id_token          String? @map("idToken")
+	session_state     String? @map("sessionState")
 
-	expiresAt DateTime
-	revokedAt DateTime?
+	user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-	@@unique([codeHash, tokenHash])
+	@@unique([provider, providerAccountId])
 }
 
-model AuthLuciaSession extends Base {
-	expiresAt DateTime
+model Session extends Base {
+	sessionToken String   @unique
+	userId       String
+	expires      DateTime
+	user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
 
-	userId    String
-	user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+model VerificationToken extends Base {
+	identifier String
+	token      String
+	expires    DateTime
+
+	@@unique([identifier, token])
 }

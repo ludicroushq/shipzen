@@ -16,7 +16,8 @@
 				"noUnusedVariables": "error"
 			},
 			"nursery": {
-				"useSortedClasses": "error"
+				"useSortedClasses": "error",
+				"noConsole": "error"
 			},
 			"style": {
 				"useFilenamingConvention": {

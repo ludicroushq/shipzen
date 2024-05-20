@@ -1,73 +1,63 @@
-import { isProd } from "@/config/node";
+import { from, transport } from "@/mailer/config";
 import { _prisma, dbAdmin } from "@/prisma";
-import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
-import { type User as DatabaseUser, UserRole } from "@prisma/client";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { type User, UserRole } from "@prisma/client";
 import { enhance } from "@zenstackhq/runtime";
-import type { Session, User } from "lucia";
-import { Lucia, TimeSpan } from "lucia";
-import { cookies } from "next/headers";
+import NextAuth from "next-auth";
+import Nodemailer from "next-auth/providers/nodemailer";
 import { cache } from "react";
 
-const adapter = new PrismaAdapter(dbAdmin.authLuciaSession, dbAdmin.user);
-
-export const lucia = new Lucia(adapter, {
-	sessionExpiresIn: new TimeSpan(90, "d"),
-	sessionCookie: {
-		name: isProd ? "__Host-lucia-session" : "lucia-session",
-		expires: false,
-		attributes: {
-			secure: isProd,
-		},
-	},
-	getUserAttributes: (attributes) => {
-		const displayName = attributes.email
-			? attributes.email.split("@")[0]
-			: "Anonymous";
-		return {
-			...attributes,
-			displayName,
-		};
-	},
-});
-
-declare module "lucia" {
-	interface Register {
-		Lucia: typeof lucia;
-		DatabaseUserAttributes: DatabaseUser & {
+declare module "next-auth" {
+	interface Session {
+		user: User & {
 			displayName: string;
+			isAdmin: boolean;
 		};
 	}
 }
 
-export const getAuth = cache(
-	async (): Promise<{ user: User; session: Session } | null> => {
-		const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
-		if (!sessionId) {
-			return null;
-		}
-
-		const auth = await lucia.validateSession(sessionId);
-		if (!auth.session) return null;
-		return auth;
+export const { handlers, signIn, signOut, auth } = NextAuth({
+	adapter: PrismaAdapter(dbAdmin),
+	theme: {
+		brandColor: "#000000",
+		buttonText: "#ffffff",
+		colorScheme: "light",
 	},
-);
+	providers: [
+		Nodemailer({
+			id: "email",
+			name: "Email",
+			server: transport,
+			from,
+			// sendVerificationRequest(_params) {
+			// 	// biome-ignore lint/nursery/noConsole: <explanation>
+			// 	console.log(_params);
+			// },
+		}),
+	],
+	callbacks: {
+		session({ session }) {
+			const isAdmin = session.user.role === UserRole.ADMIN;
+			const displayName = session.user.email.split("@")[0];
 
-export const getEnhancedDb = cache(async () => {
-	const auth = await getAuth();
+			return {
+				...session,
+				user: {
+					...session.user,
+					displayName,
+					isAdmin,
+				},
+			};
+		},
+	},
+});
+
+export const authDb = cache(async () => {
+	const session = await auth();
 
 	const db = enhance(_prisma, {
-		user: auth?.user as DatabaseUser,
+		user: session?.user ? session.user : undefined,
 	});
 
 	return db;
-});
-
-export const verifyAdmin = cache(async () => {
-	const auth = await getAuth();
-
-	if (auth?.user && auth.user.role === UserRole.ADMIN) {
-		return true;
-	}
-
-	return false;
 });
