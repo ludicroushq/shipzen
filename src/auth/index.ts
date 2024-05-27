@@ -1,5 +1,5 @@
 import { from, transport } from "@/mailer/config";
-import { _prisma, dbAdmin } from "@/prisma";
+import { _prisma } from "@/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type User, UserRole } from "@prisma/client";
 import { enhance } from "@zenstackhq/runtime";
@@ -17,7 +17,7 @@ declare module "next-auth" {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-	adapter: PrismaAdapter(dbAdmin),
+	adapter: PrismaAdapter(_prisma),
 	theme: {
 		brandColor: "#000000",
 		buttonText: "#ffffff",
@@ -29,10 +29,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 			name: "Email",
 			server: transport,
 			from,
-			// sendVerificationRequest(_params) {
-			// 	// biome-ignore lint/nursery/noConsole: <explanation>
-			// 	console.log(_params);
-			// },
 		}),
 	],
 	callbacks: {

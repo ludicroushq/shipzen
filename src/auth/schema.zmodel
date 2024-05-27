@@ -22,14 +22,14 @@ model Account extends Base {
 model Session extends Base {
 	sessionToken String   @unique
 	userId       String
-	expires      DateTime
+	expires      DateTime @map("expiresAt")
 	user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken extends Base {
 	identifier String
 	token      String
-	expires    DateTime
+	expires    DateTime @map("expiresAt")
 
 	@@unique([identifier, token])
 }
