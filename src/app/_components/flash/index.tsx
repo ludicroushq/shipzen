@@ -1,7 +1,8 @@
 "use client";
+import { Toaster } from "@/shadcn/ui/sonner";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 function getType(type: string) {
 	switch (type) {
@@ -18,13 +19,13 @@ function getType(type: string) {
 	}
 }
 
-export function Toast() {
+export function Flash() {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const pathname = usePathname();
 
 	useEffect(() => {
-		const queryParam = searchParams.get("toast");
+		const queryParam = searchParams.get("flash");
 		if (!queryParam) return;
 		const [type, message] = queryParam.split(":");
 		if (!type || !message) return;
@@ -32,7 +33,7 @@ export function Toast() {
 		toast[getType(type)](message);
 
 		const newParams = new URLSearchParams(searchParams);
-		newParams.delete("toast");
+		newParams.delete("flash");
 		router.replace(`${pathname}?${newParams.toString()}`);
 	}, [pathname, router, searchParams]);
 	return <Toaster position="top-center" richColors />;
