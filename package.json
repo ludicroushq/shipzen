@@ -89,7 +89,7 @@
 			]
 		},
 		"lint": {
-			"command": "eslint .",
+			"command": "eslint . --fix",
 			"dependencies": [
 				"zenstack:generate"
 			]
@@ -150,7 +150,7 @@
 			]
 		},
 		"lefthook:lint": {
-			"command": "eslint",
+			"command": "eslint --fix",
 			"dependencies": [
 				"zenstack:generate"
 			]
