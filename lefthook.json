@@ -3,11 +3,12 @@
 		"parallel": true,
 		"commands": {
 			"lint": {
+				"glob": "**/*.{js,jsx,mjs,ts,tsx}",
 				"run": "eslint \"{staged_files}\"",
 				"stage_fixed": true
 			},
 			"pretty": {
-				"run": "prettier --write \"{staged_files}\"",
+				"run": "prettier --ignore-unknown --write \"{staged_files}\"",
 				"stage_fixed": true
 			}
 		}
