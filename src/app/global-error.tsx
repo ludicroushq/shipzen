@@ -16,7 +16,6 @@ export default function GlobalError({
 	return (
 		<html lang="en">
 			<body>
-				{/* biome-ignore lint/suspicious/noExplicitAny: instructions from sentry */}
 				<NextError statusCode={undefined as unknown as any} />
 			</body>
 		</html>
