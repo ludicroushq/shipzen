@@ -6,8 +6,6 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
 import { cn } from "@/shadcn/utils";
@@ -85,11 +83,6 @@ export function Navigation(props: NavigationProps) {
 									</DropdownMenuTrigger>
 								</Button>
 								<DropdownMenuContent>
-									<DropdownMenuLabel>My Account</DropdownMenuLabel>
-									<DropdownMenuItem>Profile</DropdownMenuItem>
-									<DropdownMenuItem>Billing</DropdownMenuItem>
-
-									<DropdownMenuSeparator />
 									<DropdownMenuItem onClick={() => signOut()}>
 										Sign Out
 									</DropdownMenuItem>
