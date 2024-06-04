@@ -37,16 +37,17 @@ module.exports = {
     },
   },
   rules: {
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-misused-promises': [
-      'error',
-      { checksVoidReturn: { attributes: false } },
-    ],
     '@typescript-eslint/no-confusing-void-expression': [
       'error',
       { ignoreArrowShorthand: true },
     ],
-    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      { checksVoidReturn: { attributes: false } },
+    ],
+    'import/prefer-default-export': 'off',
   },
   overrides: [
     {
@@ -62,7 +63,6 @@ module.exports = {
       ],
       rules: {
         'import/no-default-export': 'off',
-        'import/prefer-default-export': ['error', { target: 'any' }],
       },
     },
   ],
