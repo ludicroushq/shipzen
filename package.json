@@ -12,6 +12,7 @@
 		"dev": "wireit",
 		"lint": "wireit",
 		"mailer:dev": "wireit",
+		"pretty": "wireit",
 		"start": "wireit",
 		"test": "wireit",
 		"typecheck": "wireit"
