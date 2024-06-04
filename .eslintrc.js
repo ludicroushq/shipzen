@@ -58,8 +58,7 @@ module.exports = {
       files: [
         '*.config.{mjs,ts}',
         'src/mailer/emails/**/*.tsx',
-        'src/app/**/{page,layout,not-found,*error,opengraph-image,apple-icon}.tsx',
-        'src/app/**/{sitemap,robots}.ts',
+        'src/**/app/**/{page,layout,not-found,*error,opengraph-image,apple-icon,sitemap,robots}.{ts,tsx}',
       ],
       rules: {
         'import/no-default-export': 'off',
