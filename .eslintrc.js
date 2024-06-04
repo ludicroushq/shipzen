@@ -14,7 +14,7 @@ module.exports = {
     require.resolve('@vercel/style-guide/eslint/typescript'),
     'plugin:@cspell/recommended',
     'next/core-web-vitals',
-    'prettier',
+    'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
