@@ -5,6 +5,10 @@
 			"lint": {
 				"run": "npm run lefthook:lint -- -- {staged_files}",
 				"stage_fixed": true
+			},
+			"pretty": {
+				"run": "npm run lefthook:pretty -- -- {staged_files}",
+				"stage_fixed": true
 			}
 		}
 	}
