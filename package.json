@@ -11,8 +11,6 @@
 		"ci:test": "wireit",
 		"dev": "wireit",
 		"lint": "wireit",
-		"lefthook:lint": "wireit",
-		"lefthook:pretty": "wireit",
 		"mailer:dev": "wireit",
 		"start": "wireit",
 		"test": "wireit",
@@ -155,15 +153,6 @@
 			"dependencies": [
 				"zenstack:generate"
 			]
-		},
-		"lefthook:lint": {
-			"command": "eslint --fix",
-			"dependencies": [
-				"zenstack:generate"
-			]
-		},
-		"lefthook:pretty": {
-			"command": "prettier --write"
 		},
 		"mailer:dev": {
 			"command": "email dev --dir=./src/mailer/emails",

@@ -3,11 +3,11 @@
 		"parallel": true,
 		"commands": {
 			"lint": {
-				"run": "npm run lefthook:lint -- -- \"{staged_files}\"",
+				"run": "eslint \"{staged_files}\"",
 				"stage_fixed": true
 			},
 			"pretty": {
-				"run": "npm run lefthook:pretty -- -- \"{staged_files}\"",
+				"run": "prettier --write \"{staged_files}\"",
 				"stage_fixed": true
 			}
 		}
