@@ -88,13 +88,10 @@
 			]
 		},
 		"lint": {
-			"command": "echo 'TODO'",
+			"command": "eslint .",
 			"dependencies": [
 				"zenstack:generate"
 			]
-		},
-		"spellcheck": {
-			"command": "cspell lint . --quiet"
 		},
 		"start": {
 			"dependencies": [
@@ -104,7 +101,6 @@
 		"test": {
 			"dependencies": [
 				"lint",
-				"spellcheck",
 				"typecheck"
 			]
 		},
@@ -137,18 +133,14 @@
 		"ci:test": {
 			"dependencies": [
 				"ci:lint",
-				"ci:spellcheck",
 				"ci:typecheck"
 			]
 		},
 		"ci:lint": {
-			"command": "echo 'TODO'",
+			"command": "eslint .",
 			"dependencies": [
 				"zenstack:generate"
 			]
-		},
-		"ci:spellcheck": {
-			"command": "cspell lint . --quiet"
 		},
 		"ci:typecheck": {
 			"command": "tsc --noEmit",
