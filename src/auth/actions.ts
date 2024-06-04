@@ -1,10 +1,10 @@
-"use server";
-import { signIn, signOut } from ".";
+'use server';
+import { signIn, signOut } from '.';
 
 export async function signInAction() {
-	await signIn();
+  await signIn();
 }
 
 export async function signOutAction() {
-	await signOut();
+  await signOut();
 }
