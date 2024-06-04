@@ -1,9 +1,11 @@
-import { Card, CardBody } from "@nextui-org/react";
+import { Alert, AlertDescription, AlertTitle } from "@/shadcn/ui/alert";
+import { AlertCircleIcon } from "lucide-react";
 import type { HookResult } from "next-safe-action/hooks";
 
-type SafeActionErrorProps = {
+export type SafeActionErrorProps = {
 	result: HookResult<never, unknown>;
 };
+
 export function SafeActionError(props: SafeActionErrorProps) {
 	const { result } = props;
 
@@ -15,8 +17,10 @@ export function SafeActionError(props: SafeActionErrorProps) {
 	if (!errorMessage) return null;
 
 	return (
-		<Card className="border border-danger-200 bg-danger-100 text-foreground text-sm">
-			<CardBody>{errorMessage}</CardBody>
-		</Card>
+		<Alert variant="destructive">
+			<AlertCircleIcon className="h-4 w-4" />
+			<AlertTitle>Error</AlertTitle>
+			<AlertDescription>{errorMessage}</AlertDescription>
+		</Alert>
 	);
 }

@@ -1,9 +1,8 @@
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
-import { Providers } from "./_components/providers";
 import "./globals.css";
 import { Suspense } from "react";
-import { Toast } from "./_components/toast";
+import { Flash } from "./_components/flash";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -19,9 +18,9 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={twMerge(inter.variable, "h-full text-pretty")}>
 			<body className="h-full">
-				<Providers>{children}</Providers>
+				{children}
 				<Suspense>
-					<Toast />
+					<Flash />
 				</Suspense>
 			</body>
 		</html>

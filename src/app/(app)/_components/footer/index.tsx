@@ -1,4 +1,4 @@
-import { Link } from "@nextui-org/react";
+import Link from "next/link";
 
 export function Footer() {
 	const year = new Date().getFullYear();
@@ -17,7 +17,7 @@ export function Footer() {
 								href="https://www.shipzen.dev"
 								target="_blank"
 							>
-								<small>ShipZen</small>
+								ShipZen
 							</Link>
 							.
 						</small>

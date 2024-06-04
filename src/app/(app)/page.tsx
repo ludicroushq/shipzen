@@ -1,6 +1,6 @@
 import { signInAction } from "@/auth/actions";
-import { Button } from "@nextui-org/react";
-import { BiRightArrowAlt } from "react-icons/bi";
+import { Button } from "@/shadcn/ui/button";
+import { ArrowRightIcon } from "lucide-react";
 
 export default function Home() {
 	return (
@@ -9,14 +9,9 @@ export default function Home() {
 				<h1>TODO</h1>
 				<p>TODO</p>
 				<form action={signInAction}>
-					<Button
-						className="bg-foreground text-background"
-						color="default"
-						endContent={<BiRightArrowAlt />}
-						type="submit"
-						size="lg"
-					>
+					<Button size="lg" type="submit">
 						Get Started
+						<ArrowRightIcon className="ml-2 h-4 w-4" />
 					</Button>
 				</form>
 			</div>
