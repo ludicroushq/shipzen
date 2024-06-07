@@ -36,8 +36,8 @@ export function Navigation(props: NavigationProps) {
   }
 
   return (
-    <div className="container">
-      <div className="flex flex-col items-center justify-between py-4 md:flex-row">
+    <div className="border-b">
+      <div className="container flex flex-col items-center justify-between py-4 md:flex-row">
         <div className="flex h-16 w-full items-center justify-between">
           <Logo />
           <div className="md:hidden">
