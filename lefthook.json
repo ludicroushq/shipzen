@@ -4,7 +4,7 @@
     "commands": {
       "lint": {
         "glob": "**/*.{js,jsx,mjs,ts,tsx}",
-        "run": "eslint \"{staged_files}\"",
+        "run": "eslint --fix \"{staged_files}\"",
         "stage_fixed": true
       },
       "pretty": {
