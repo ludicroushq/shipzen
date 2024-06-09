@@ -74,7 +74,7 @@
     "zenstack": "^2.1.0"
   },
   "shipzen": {
-    "version": "0.1.1"
+    "version": "0.1.2"
   },
   "wireit": {
     "build": {
