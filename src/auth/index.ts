@@ -19,6 +19,7 @@ declare module 'next-auth' {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(_prisma),
+  trustHost: true,
   theme: {
     brandColor: '#000000',
     buttonText: '#ffffff',
