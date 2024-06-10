@@ -128,7 +128,8 @@
       ],
       "output": [
         ".next/**/*"
-      ]
+      ],
+      "clean": false
     },
     "app:start": {
       "command": "next start -p 3000",
