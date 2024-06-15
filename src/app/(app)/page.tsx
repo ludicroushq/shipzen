@@ -1,6 +1,5 @@
 import { ArrowRightIcon } from 'lucide-react';
 import { signInAction } from '@/auth/actions';
-import { Button } from '@/shadcn/ui/button';
 
 export default function Home() {
   return (
@@ -9,10 +8,9 @@ export default function Home() {
         <h1>TODO</h1>
         <p>TODO</p>
         <form action={signInAction}>
-          <Button size="lg" type="submit">
-            Get Started
-            <ArrowRightIcon className="ml-2 h-4 w-4" />
-          </Button>
+          <button className="btn btn-success" type="submit">
+            Get Started <ArrowRightIcon className="ml-2 h-4 w-4" />
+          </button>
         </form>
       </div>
     </section>

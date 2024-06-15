@@ -4,26 +4,27 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-divider mt-6 border-t py-6">
+    <div className="mt-6 border-t py-6">
       <div className="container">
-        <div className="prose">
-          <p>
-            &copy; {year} TODO. All rights reserved.
-            <br />
-            <small>
+        <footer className="footer">
+          <nav>
+            <h6 className="footer-title">
+              &copy; {year} TODO. All rights reserved.
+            </h6>
+            <div>
               Powered by{' '}
               <Link
-                color="foreground"
+                className="link"
                 href="https://www.shipzen.dev"
                 target="_blank"
               >
                 ShipZen
               </Link>
               .
-            </small>
-          </p>
-        </div>
+            </div>
+          </nav>
+        </footer>
       </div>
-    </footer>
+    </div>
   );
 }

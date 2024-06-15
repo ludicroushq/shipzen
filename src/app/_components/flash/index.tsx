@@ -1,8 +1,7 @@
 'use client';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
-import { toast } from 'sonner';
-import { Toaster } from '@/shadcn/ui/sonner';
+import { Toaster, toast } from 'sonner';
 
 function getType(type: string) {
   switch (type) {

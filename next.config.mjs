@@ -21,6 +21,15 @@ syncModuleToApp('server');
 const nextConfig = {
   output: env.IS_STANDALONE ? 'standalone' : undefined,
   poweredByHeader: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.gravatar.com',
+        pathname: '/avatar/**',
+      },
+    ],
+  },
   experimental: {
     serverComponentsExternalPackages: ['@zenstackhq/runtime'],
     swcPlugins: [
