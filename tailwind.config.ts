@@ -47,7 +47,11 @@ const config = {
     },
   },
   presets: [require('@premieroctet/next-admin/dist/preset')],
-  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('tailwindcss-animate'),
+    require('daisyui'),
+  ],
 } satisfies Config;
 
 export default config;
