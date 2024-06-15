@@ -1,22 +1,13 @@
 'use client';
 import { md5 } from 'js-md5';
-import { ChevronDownIcon, HomeIcon, LogInIcon, MenuIcon } from 'lucide-react';
+import { HomeIcon, LogInIcon, MenuIcon } from 'lucide-react';
 import type { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
-import { cn } from '@/shadcn/utils';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/shadcn/ui/dropdown-menu';
-import { Button } from '@/shadcn/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/shadcn/ui/avatar';
+import { twMerge } from 'tailwind-merge';
 import { signInAction } from '@/auth/actions';
-import { Logo } from '../logo';
 
 type NavigationProps = {
   session: Session | null;
@@ -24,92 +15,96 @@ type NavigationProps = {
 
 export function Navigation(props: NavigationProps) {
   const { session } = props;
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  function getButtonVariant(path: string) {
-    if (path === pathname) {
-      return 'default' as const;
-    }
+  const menu = session ? (
+    <>
+      <li>
+        <Link href="/" className={twMerge(pathname === '/' && 'active')}>
+          <HomeIcon className="h-4 w-4" />
+          Dashboard
+        </Link>
+      </li>
+      <div className="dropdown dropdown-end">
+        <div
+          tabIndex={0}
+          role="button"
+          className="avatar btn btn-circle btn-ghost btn-sm size-9"
+        >
+          <div className="w-10 rounded-full border">
+            <Image
+              alt={session.user.displayName}
+              width={36}
+              height={36}
+              src={`https://www.gravatar.com/avatar/${md5(
+                session.user.email,
+              )}?d=404`}
+            />
+          </div>
+        </div>
+        <ul
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- interactive
+          tabIndex={0}
+          className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
+        >
+          <li className="text-error">
+            <button type="button" onClick={() => signOut()}>
+              Sign Out
+            </button>
+          </li>
+        </ul>
+      </div>
+    </>
+  ) : (
+    <>
+      <li>
+        <Link href="/" className={twMerge(pathname === '/' && 'active')}>
+          <HomeIcon className="h-4 w-4" />
+          Home
+        </Link>
+      </li>
 
-    return 'ghost' as const;
-  }
+      <li>
+        <form action={signInAction} className="w-auto">
+          <button className="flex items-center gap-2" type="submit">
+            <LogInIcon className="h-4 w-4" />
+            Get Started
+          </button>
+        </form>
+      </li>
+    </>
+  );
 
   return (
     <div className="border-b">
-      <div className="container flex flex-col items-center justify-between py-4 md:flex-row">
-        <div className="flex h-16 w-full items-center justify-between">
-          <Logo />
-          <div className="md:hidden">
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={() => setIsMenuOpen((prevValue) => !prevValue)}
-            >
-              <MenuIcon />
-            </Button>
+      <div className="container">
+        <div className="navbar px-0">
+          <div className="navbar-start">
+            <Link href="/" className="text-2xl font-bold">
+              TODO
+            </Link>
           </div>
-        </div>
-
-        <div
-          className={cn(
-            isMenuOpen ? 'flex' : 'hidden',
-            'w-full flex-col gap-2 md:flex md:flex-row md:justify-end',
-          )}
-        >
-          {session ? (
-            <>
-              <Button asChild variant={getButtonVariant('/')} size="lg">
-                <Link href="/">
-                  <HomeIcon className="mr-2 h-4 w-4" />
-                  Dashboard
-                </Link>
-              </Button>
-              <DropdownMenu>
-                <Button asChild variant="ghost" size="lg">
-                  <DropdownMenuTrigger>
-                    <Avatar className="mr-4">
-                      <AvatarImage
-                        src={`https://www.gravatar.com/avatar/${md5(
-                          session.user.email,
-                        )}?d=404`}
-                      />
-                      <AvatarFallback className="bg-slate-900 text-white">
-                        {session.user.displayName.charAt(0)}
-                      </AvatarFallback>
-                    </Avatar>
-                    {session.user.displayName}
-                    <ChevronDownIcon className="ml-2 h-4 w-4" />
-                  </DropdownMenuTrigger>
-                </Button>
-                <DropdownMenuContent>
-                  <DropdownMenuItem onClick={() => signOut()}>
-                    Sign Out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </>
-          ) : (
-            <>
-              <Button asChild variant={getButtonVariant('/')} size="lg">
-                <Link href="/">
-                  <HomeIcon className="mr-2 h-4 w-4" />
-                  Home
-                </Link>
-              </Button>
-              <form action={signInAction} className="w-auto">
-                <Button
-                  type="submit"
-                  variant="ghost"
-                  size="lg"
-                  className="w-full"
-                >
-                  <LogInIcon className="mr-2 h-4 w-4" />
-                  Get Started
-                </Button>
-              </form>
-            </>
-          )}
+          <div className="navbar-end">
+            <div className="hidden md:flex">
+              <ul className="menu menu-horizontal space-x-2">{menu}</ul>
+            </div>
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost md:hidden"
+              >
+                <MenuIcon />
+              </div>
+              <ul
+                // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- interactive
+                tabIndex={0}
+                className="menu dropdown-content z-[1] mt-3 w-max space-y-2 rounded-box bg-base-100 p-2 shadow"
+              >
+                {menu}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
