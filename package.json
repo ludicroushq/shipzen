@@ -2,7 +2,6 @@
   "name": "TODO",
   "version": "0.0.0",
   "private": true,
-  "license": "MIT",
   "scripts": {
     "app:build": "wireit",
     "app:dev": "wireit",
