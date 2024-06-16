@@ -5,6 +5,7 @@
   "ignorePaths": ["**/*.svg"],
   "words": [
     "citext",
+    "daisyui",
     "datasource",
     "infisical",
     "lefthook",
