@@ -14,7 +14,7 @@ export function Footer() {
             <div>
               Powered by{' '}
               <Link
-                className="link"
+                className="link-hover link"
                 href="https://www.shipzen.dev"
                 target="_blank"
               >
