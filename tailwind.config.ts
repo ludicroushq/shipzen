@@ -39,7 +39,32 @@ const config = {
     require('daisyui'),
   ],
   daisyui: {
-    themes: false,
+    themes: [
+      {
+        shipzen: {
+          primary: defaultColors.indigo['700'],
+          'primary-content': defaultColors.indigo['50'],
+          secondary: defaultColors.purple['700'],
+          'secondary-content': defaultColors.purple['50'],
+          accent: defaultColors.pink['700'],
+          'accent-content': defaultColors.pink['50'],
+          info: defaultColors.blue['700'],
+          'info-content': defaultColors.blue['50'],
+          success: defaultColors.green['700'],
+          'success-content': defaultColors.green['50'],
+          warning: defaultColors.yellow['700'],
+          'warning-content': defaultColors.yellow['50'],
+          error: defaultColors.red['700'],
+          'error-content': defaultColors.red['50'],
+          neutral: defaultColors.neutral['950'],
+          'neutral-content': defaultColors.neutral['50'],
+          'base-100': defaultColors.neutral['100'],
+          'base-200': defaultColors.neutral['200'],
+          'base-300': defaultColors.neutral['300'],
+          'base-content': defaultColors.neutral['950'],
+        },
+      },
+    ],
     darkTheme: 'light',
   },
 } satisfies Config;

@@ -1,5 +1,4 @@
 import { Inter } from 'next/font/google';
-import { twMerge } from 'tailwind-merge';
 import './globals.css';
 import { Suspense } from 'react';
 import { Flash } from './_components/flash';
@@ -16,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={twMerge(inter.variable, 'h-full text-pretty')}>
+    <html lang="en" className={inter.variable}>
       <body className="h-full">
         {children}
         <Suspense>
