@@ -29,7 +29,8 @@ const config = {
       },
     },
     fontFamily: {
-      sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
+      display: ['var(--font-inter-tight)', ...defaultTheme.fontFamily.sans],
+      body: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
     },
   },
   presets: [require('@premieroctet/next-admin/dist/preset')],
