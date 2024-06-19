@@ -66,6 +66,7 @@ const config = {
         },
       },
     ],
+    logs: false,
   },
 } satisfies Config;
 
