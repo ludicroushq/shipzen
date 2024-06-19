@@ -29,17 +29,24 @@ export function Navigation(props: NavigationProps) {
         <div
           tabIndex={0}
           role="button"
-          className="avatar btn btn-circle btn-ghost btn-sm size-9"
+          className="btn btn-circle btn-ghost btn-sm size-9"
         >
-          <div className="w-10 rounded-full border">
-            <Image
-              alt={session.user.displayName}
-              width={36}
-              height={36}
-              src={`https://www.gravatar.com/avatar/${md5(
-                session.user.email,
-              )}?d=404`}
-            />
+          <div className="avatar placeholder">
+            <div className="absolute inset-0 rounded-full text-neutral">
+              <span className="font-black">
+                {session.user.displayName.charAt(0).toUpperCase()}
+              </span>
+            </div>
+            <div className="relative w-full rounded-full border">
+              <Image
+                alt={session.user.displayName}
+                width={36}
+                height={36}
+                src={`https://www.gravatar.com/avatar/${md5(
+                  session.user.email,
+                )}?d=blank`}
+              />
+            </div>
           </div>
         </div>
         <ul
