@@ -58,14 +58,13 @@ const config = {
           'error-content': defaultColors.red['50'],
           neutral: defaultColors.neutral['950'],
           'neutral-content': defaultColors.neutral['50'],
-          'base-100': defaultColors.neutral['100'],
-          'base-200': defaultColors.neutral['200'],
-          'base-300': defaultColors.neutral['300'],
+          'base-100': defaultColors.white,
+          'base-200': defaultColors.neutral['100'],
+          'base-300': defaultColors.neutral['200'],
           'base-content': defaultColors.neutral['950'],
         },
       },
     ],
-    darkTheme: 'light',
   },
 } satisfies Config;
 
