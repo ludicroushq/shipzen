@@ -16,7 +16,7 @@ export function EmailWrapper(props: EmailWrapperProps) {
           <title>{subject}</title>
         </Head>
         <Preview>{previewText}</Preview>
-        <Body className="bg-white font-sans">{children}</Body>
+        <Body className="font-sans bg-white">{children}</Body>
       </Tailwind>
     </Html>
   );

@@ -16,20 +16,6 @@ const config = {
           primary: defaultColors.zinc,
         },
       },
-      keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
-        },
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-      },
     },
     container: {
       center: true,
@@ -43,7 +29,8 @@ const config = {
       },
     },
     fontFamily: {
-      sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
+      display: ['var(--font-inter-tight)', ...defaultTheme.fontFamily.sans],
+      body: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
     },
   },
   presets: [require('@premieroctet/next-admin/dist/preset')],
@@ -53,8 +40,33 @@ const config = {
     require('daisyui'),
   ],
   daisyui: {
-    themes: false,
-    darkTheme: 'light',
+    themes: [
+      {
+        shipzen: {
+          primary: defaultColors.indigo['700'],
+          'primary-content': defaultColors.indigo['50'],
+          secondary: defaultColors.purple['700'],
+          'secondary-content': defaultColors.purple['50'],
+          accent: defaultColors.pink['700'],
+          'accent-content': defaultColors.pink['50'],
+          info: defaultColors.blue['700'],
+          'info-content': defaultColors.blue['50'],
+          success: defaultColors.green['700'],
+          'success-content': defaultColors.green['50'],
+          warning: defaultColors.yellow['700'],
+          'warning-content': defaultColors.yellow['50'],
+          error: defaultColors.red['700'],
+          'error-content': defaultColors.red['50'],
+          neutral: defaultColors.neutral['950'],
+          'neutral-content': defaultColors.neutral['50'],
+          'base-100': defaultColors.white,
+          'base-200': defaultColors.neutral['100'],
+          'base-300': defaultColors.neutral['200'],
+          'base-content': defaultColors.neutral['950'],
+        },
+      },
+    ],
+    logs: false,
   },
 } satisfies Config;
 

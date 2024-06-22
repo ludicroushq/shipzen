@@ -48,6 +48,12 @@ module.exports = {
       { checksVoidReturn: { attributes: false } },
     ],
     'import/prefer-default-export': 'off',
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      {
+        depth: 3,
+      },
+    ],
   },
   overrides: [
     {

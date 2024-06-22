@@ -15,7 +15,6 @@ function syncModuleToApp(name) {
 }
 syncModuleToApp('admin');
 syncModuleToApp('auth');
-syncModuleToApp('server');
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
