@@ -1,5 +1,5 @@
-'use server';
-import { signIn, signOut } from '.';
+"use server";
+import { signIn, signOut } from ".";
 
 export async function signInAction() {
   await signIn();

@@ -1,10 +1,10 @@
-import { NextAdmin } from '@premieroctet/next-admin';
-import { getPropsFromParams } from '@premieroctet/next-admin/dist/appRouter';
-import { notFound } from 'next/navigation';
-import { auth, authDb } from '@/auth';
-import { options } from '@/admin';
-import schema from '@/../prisma/json-schema/json-schema.json';
-import { action, deleteAction, searchPaginatedResourceAction } from './actions';
+import schema from "@/../prisma/json-schema/json-schema.json";
+import { options } from "@/admin";
+import { auth, authDb } from "@/auth";
+import { NextAdmin } from "@premieroctet/next-admin";
+import { getPropsFromParams } from "@premieroctet/next-admin/dist/appRouter";
+import { notFound } from "next/navigation";
+import { action, deleteAction, searchPaginatedResourceAction } from "./actions";
 
 export default async function AdminPage({
   params,

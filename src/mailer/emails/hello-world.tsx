@@ -1,5 +1,5 @@
-import type { EmailProps } from '..';
-import { EmailWrapper } from './_components/email-wrapper';
+import type { EmailProps } from "..";
+import { EmailWrapper } from "./_components/email-wrapper";
 
 type HelloWorldProps = {
   name: string;
@@ -14,6 +14,6 @@ export function HelloWorld(props: HelloWorldProps) {
   );
 }
 HelloWorld.PreviewProps = {
-  name: 'ShipZen',
+  name: "ShipZen",
 };
 export default HelloWorld;

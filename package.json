@@ -11,7 +11,7 @@
     "dev": "wireit",
     "lint": "wireit",
     "mailer:dev": "wireit",
-    "pretty": "wireit",
+    "spellcheck": "wireit",
     "start": "wireit",
     "test": "wireit",
     "typecheck": "wireit"
@@ -41,7 +41,7 @@
     "zsa-react": "^0.1.8"
   },
   "devDependencies": {
-    "@cspell/eslint-plugin": "^8.9.1",
+    "@biomejs/biome": "^1.8.2",
     "@dotenvx/dotenvx": "^0.45.0",
     "@tailwindcss/typography": "^0.5.13",
     "@types/js-md5": "^0.7.2",
@@ -49,17 +49,13 @@
     "@types/nodemailer": "^6.4.15",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
-    "@vercel/style-guide": "^6.0.0",
     "autoprefixer": "^10.4.19",
     "cpx2": "^7.0.1",
     "cspell": "^8.9.1",
     "daisyui": "^4.12.2",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.4",
     "lefthook": "^1.6.18",
     "next-superjson-plugin": "^0.6.3",
     "postcss": "^8.4.38",
-    "prettier-plugin-tailwindcss": "^0.6.5",
     "prisma": "^5.15.1",
     "react-email": "^2.1.2",
     "tailwindcss": "^3.4.3",
@@ -68,61 +64,41 @@
     "zenstack": "^2.2.4"
   },
   "shipzen": {
-    "version": "0.1.5"
+    "version": "0.1.6"
   },
   "wireit": {
     "build": {
-      "dependencies": [
-        "app:build"
-      ]
+      "dependencies": ["app:build"]
     },
     "dev": {
-      "dependencies": [
-        "app:dev"
-      ]
+      "dependencies": ["app:dev"]
     },
     "lint": {
-      "command": "eslint . --fix",
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "command": "biome check . --write --unsafe",
+      "dependencies": ["zenstack:generate"]
     },
-    "pretty": {
-      "command": "prettier --write ."
+    "spellcheck": {
+      "command": "cspell lint . --quiet"
     },
     "start": {
-      "dependencies": [
-        "app:start"
-      ]
+      "dependencies": ["app:start"]
     },
     "test": {
-      "dependencies": [
-        "lint",
-        "pretty",
-        "typecheck"
-      ]
+      "dependencies": ["lint", "spellcheck", "typecheck"]
     },
     "typecheck": {
       "command": "tsc --noEmit",
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "dependencies": ["zenstack:generate"]
     },
     "app:dev": {
       "command": "next dev -p 3000",
       "service": true,
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "dependencies": ["zenstack:generate"]
     },
     "app:build": {
       "command": "next build",
-      "dependencies": [
-        "zenstack:generate"
-      ],
-      "output": [
-        ".next/**/*"
-      ],
+      "dependencies": ["zenstack:generate"],
+      "output": [".next/**/*"],
       "clean": false
     },
     "app:start": {
@@ -130,26 +106,18 @@
       "service": true
     },
     "ci:test": {
-      "dependencies": [
-        "ci:lint",
-        "ci:pretty",
-        "ci:typecheck"
-      ]
+      "dependencies": ["ci:lint", "ci:spellcheck", "ci:typecheck"]
     },
     "ci:lint": {
-      "command": "eslint .",
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "command": "biome check .",
+      "dependencies": ["zenstack:generate"]
     },
-    "ci:pretty": {
-      "command": "prettier --check ."
+    "ci:spellcheck": {
+      "command": "cspell lint . --quiet"
     },
     "ci:typecheck": {
       "command": "tsc --noEmit",
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "dependencies": ["zenstack:generate"]
     },
     "mailer:dev": {
       "command": "email dev --dir=./src/mailer/emails",
@@ -157,14 +125,8 @@
     },
     "zenstack:generate": {
       "command": "zenstack generate",
-      "files": [
-        "prisma/**/*",
-        "schema.zmodel"
-      ],
-      "output": [
-        "node_modules/.prisma/**/*",
-        "node_modules/.zenstack/**/*"
-      ]
+      "files": ["prisma/**/*", "schema.zmodel"],
+      "output": ["node_modules/.prisma/**/*", "node_modules/.zenstack/**/*"]
     }
   }
 }

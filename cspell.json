@@ -4,9 +4,12 @@
   "useGitignore": true,
   "ignorePaths": ["**/*.svg"],
   "words": [
+    "biomejs",
     "citext",
     "daisyui",
     "datasource",
+    "dotenvx",
+    "filenaming",
     "infisical",
     "lefthook",
     "nextadmin",
