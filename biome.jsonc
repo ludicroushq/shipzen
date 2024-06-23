@@ -14,13 +14,14 @@
 		"rules": {
 			"recommended": true,
 			"correctness": {
-				"useHookAtTopLevel": "error",
 				"noUnusedImports": "error",
-				"noUnusedVariables": "error"
+				"noUnusedVariables": "error",
+				"useHookAtTopLevel": "error"
 			},
 			"nursery": {
 				"useSortedClasses": "error",
-				"noConsole": "error"
+				"noConsole": "error",
+				"noUndeclaredDependencies": "error"
 			},
 			"style": {
 				"useFilenamingConvention": {
@@ -34,9 +35,9 @@
 		}
 	},
 	"vcs": {
-		"enabled": true,
 		"clientKind": "git",
-		"useIgnoreFile": true,
-		"defaultBranch": "main"
+		"enabled": true,
+		"defaultBranch": "main",
+		"useIgnoreFile": true
 	}
 }
