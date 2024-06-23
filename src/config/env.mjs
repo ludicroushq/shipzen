@@ -1,7 +1,7 @@
 // @ts-check
 
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod';
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
 export const env = createEnv({
   server: {
@@ -11,13 +11,11 @@ export const env = createEnv({
     IS_STANDALONE: z
       .string()
       .optional()
-      .transform((s) => s === 'true'),
+      .transform((s) => s === "true"),
     SMTP_URL: z.string().url(),
   },
   client: {},
   experimental__runtimeEnv: {},
   emptyStringAsUndefined: true,
-  skipValidation:
-    Boolean(process.env.SKIP_ENV_VALIDATION) ||
-    Boolean(process.env.NEXT_PUBLIC_SKIP_ENV_VALIDATION),
+  skipValidation: Boolean(process.env.SKIP_ENV_VALIDATION) || Boolean(process.env.NEXT_PUBLIC_SKIP_ENV_VALIDATION),
 });

@@ -1,5 +1,5 @@
-import { ArrowRightIcon } from 'lucide-react';
-import { signInAction } from '@/auth/actions';
+import { signInAction } from "@/auth/actions";
+import { ArrowRightIcon } from "lucide-react";
 
 export default function Home() {
   return (

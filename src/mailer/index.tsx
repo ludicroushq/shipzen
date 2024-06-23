@@ -1,8 +1,8 @@
-import { render } from '@react-email/components';
-import { createTransport } from 'nodemailer';
-import type { ComponentType } from 'react';
-import { logger } from '@/logger';
-import { from, replyTo, transport } from './config';
+import { logger } from "@/logger";
+import { render } from "@react-email/components";
+import { createTransport } from "nodemailer";
+import type { ComponentType } from "react";
+import { from, replyTo, transport } from "./config";
 
 export const transporter = createTransport(transport);
 
@@ -11,11 +11,7 @@ export type EmailProps = {
   to: string;
 };
 
-export async function sendEmail<T>(
-  opts: EmailProps,
-  Component: ComponentType<T & EmailProps>,
-  props: T,
-) {
+export async function sendEmail<T>(opts: EmailProps, Component: ComponentType<T & EmailProps>, props: T) {
   const { subject, to } = opts;
   const fullProps = { ...props, ...opts };
   const emailBody = render(<Component {...fullProps} />);
@@ -32,6 +28,6 @@ export async function sendEmail<T>(
   });
 
   if (email.rejected.length > 0) {
-    logger.error('Email rejected', email.rejected.join(', '));
+    logger.error("Email rejected", email.rejected.join(", "));
   }
 }

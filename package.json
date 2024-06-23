@@ -68,57 +68,37 @@
   },
   "wireit": {
     "build": {
-      "dependencies": [
-        "app:build"
-      ]
+      "dependencies": ["app:build"]
     },
     "dev": {
-      "dependencies": [
-        "app:dev"
-      ]
+      "dependencies": ["app:dev"]
     },
     "lint": {
       "command": "biome check . --write --unsafe",
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "dependencies": ["zenstack:generate"]
     },
     "spellcheck": {
       "command": "cspell lint . --quiet"
     },
     "start": {
-      "dependencies": [
-        "app:start"
-      ]
+      "dependencies": ["app:start"]
     },
     "test": {
-      "dependencies": [
-        "lint",
-        "spellcheck",
-        "typecheck"
-      ]
+      "dependencies": ["lint", "spellcheck", "typecheck"]
     },
     "typecheck": {
       "command": "tsc --noEmit",
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "dependencies": ["zenstack:generate"]
     },
     "app:dev": {
       "command": "next dev -p 3000",
       "service": true,
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "dependencies": ["zenstack:generate"]
     },
     "app:build": {
       "command": "next build",
-      "dependencies": [
-        "zenstack:generate"
-      ],
-      "output": [
-        ".next/**/*"
-      ],
+      "dependencies": ["zenstack:generate"],
+      "output": [".next/**/*"],
       "clean": false
     },
     "app:start": {
@@ -126,26 +106,18 @@
       "service": true
     },
     "ci:test": {
-      "dependencies": [
-        "ci:lint",
-        "ci:spellcheck",
-        "ci:typecheck"
-      ]
+      "dependencies": ["ci:lint", "ci:spellcheck", "ci:typecheck"]
     },
     "ci:lint": {
       "command": "biome check .",
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "dependencies": ["zenstack:generate"]
     },
     "ci:spellcheck": {
       "command": "cspell lint . --quiet"
     },
     "ci:typecheck": {
       "command": "tsc --noEmit",
-      "dependencies": [
-        "zenstack:generate"
-      ]
+      "dependencies": ["zenstack:generate"]
     },
     "mailer:dev": {
       "command": "email dev --dir=./src/mailer/emails",
@@ -153,14 +125,8 @@
     },
     "zenstack:generate": {
       "command": "zenstack generate",
-      "files": [
-        "prisma/**/*",
-        "schema.zmodel"
-      ],
-      "output": [
-        "node_modules/.prisma/**/*",
-        "node_modules/.zenstack/**/*"
-      ]
+      "files": ["prisma/**/*", "schema.zmodel"],
+      "output": ["node_modules/.prisma/**/*", "node_modules/.zenstack/**/*"]
     }
   }
 }

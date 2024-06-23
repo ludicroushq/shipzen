@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
-import { auth } from '@/auth';
-import { baseUrl } from '@/config/app';
-import { Footer } from './_components/footer';
-import { Navigation } from './_components/navigation';
+import { auth } from "@/auth";
+import { baseUrl } from "@/config/app";
+import type { Metadata } from "next";
+import { Footer } from "./_components/footer";
+import { Navigation } from "./_components/navigation";
 
 export const metadata: Metadata = {
-  title: 'TODO',
-  description: 'TODO',
+  title: "TODO",
+  description: "TODO",
   metadataBase: new URL(baseUrl),
 };
 

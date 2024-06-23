@@ -1,11 +1,11 @@
-import { Body, Head, Html, Preview, Tailwind } from '@react-email/components';
-import type { ReactNode } from 'react';
-import type { EmailProps } from '@/mailer';
+import type { EmailProps } from "@/mailer";
+import { Body, Head, Html, Preview, Tailwind } from "@react-email/components";
+import type { ReactNode } from "react";
 
 type EmailWrapperProps = {
   children: ReactNode;
   previewText: string;
-} & Pick<EmailProps, 'subject'>;
+} & Pick<EmailProps, "subject">;
 
 export function EmailWrapper(props: EmailWrapperProps) {
   const { children, previewText, subject } = props;
@@ -16,7 +16,7 @@ export function EmailWrapper(props: EmailWrapperProps) {
           <title>{subject}</title>
         </Head>
         <Preview>{previewText}</Preview>
-        <Body className="font-sans bg-white">{children}</Body>
+        <Body className="bg-white font-sans">{children}</Body>
       </Tailwind>
     </Html>
   );
