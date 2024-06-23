@@ -78,7 +78,7 @@
       ]
     },
     "lint": {
-      "command": "biome check . --unsafe",
+      "command": "biome check . --write --unsafe",
       "dependencies": [
         "zenstack:generate"
       ]
