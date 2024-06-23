@@ -3,12 +3,7 @@
     "parallel": true,
     "commands": {
       "lint": {
-        "glob": "**/*.{js,jsx,mjs,ts,tsx}",
-        "run": "eslint --fix \"{staged_files}\"",
-        "stage_fixed": true
-      },
-      "pretty": {
-        "run": "prettier --ignore-unknown --write \"{staged_files}\"",
+        "run": "npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}",
         "stage_fixed": true
       }
     }

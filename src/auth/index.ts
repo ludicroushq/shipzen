@@ -8,7 +8,6 @@ import { _prisma } from '@/prisma';
 import { from, transport } from '@/mailer/config';
 
 declare module 'next-auth' {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions -- declaration merging
   interface Session {
     user: User & {
       displayName: string;

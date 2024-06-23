@@ -11,7 +11,7 @@
     "dev": "wireit",
     "lint": "wireit",
     "mailer:dev": "wireit",
-    "pretty": "wireit",
+    "spellcheck": "wireit",
     "start": "wireit",
     "test": "wireit",
     "typecheck": "wireit"
@@ -41,6 +41,7 @@
     "zsa-react": "^0.1.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.8.2",
     "@dotenvx/dotenvx": "^0.45.0",
     "@tailwindcss/typography": "^0.5.13",
     "@types/js-md5": "^0.7.2",
@@ -55,7 +56,6 @@
     "lefthook": "^1.6.18",
     "next-superjson-plugin": "^0.6.3",
     "postcss": "^8.4.38",
-    "prettier-plugin-tailwindcss": "^0.6.5",
     "prisma": "^5.15.1",
     "react-email": "^2.1.2",
     "tailwindcss": "^3.4.3",
@@ -78,13 +78,13 @@
       ]
     },
     "lint": {
-      "command": "eslint . --fix",
+      "command": "biome check . --apply-unsafe",
       "dependencies": [
         "zenstack:generate"
       ]
     },
-    "pretty": {
-      "command": "prettier --write ."
+    "spellcheck": {
+      "command": "cspell lint . --quiet"
     },
     "start": {
       "dependencies": [
@@ -94,7 +94,7 @@
     "test": {
       "dependencies": [
         "lint",
-        "pretty",
+        "spellcheck",
         "typecheck"
       ]
     },
@@ -128,18 +128,18 @@
     "ci:test": {
       "dependencies": [
         "ci:lint",
-        "ci:pretty",
+        "ci:spellcheck",
         "ci:typecheck"
       ]
     },
     "ci:lint": {
-      "command": "eslint .",
+      "command": "biome check .",
       "dependencies": [
         "zenstack:generate"
       ]
     },
-    "ci:pretty": {
-      "command": "prettier --check ."
+    "ci:spellcheck": {
+      "command": "cspell lint . --quiet"
     },
     "ci:typecheck": {
       "command": "tsc --noEmit",

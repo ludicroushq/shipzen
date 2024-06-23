@@ -50,7 +50,6 @@ export function Navigation(props: NavigationProps) {
           </div>
         </div>
         <ul
-          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- interactive
           tabIndex={0}
           className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
         >
@@ -104,7 +103,6 @@ export function Navigation(props: NavigationProps) {
                 <MenuIcon />
               </div>
               <ul
-                // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- interactive
                 tabIndex={0}
                 className="menu dropdown-content z-[1] mt-3 w-max space-y-2 rounded-box bg-base-100 p-2 shadow"
               >
