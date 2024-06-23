@@ -41,7 +41,6 @@
     "zsa-react": "^0.1.8"
   },
   "devDependencies": {
-    "@cspell/eslint-plugin": "^8.9.1",
     "@dotenvx/dotenvx": "^0.45.0",
     "@tailwindcss/typography": "^0.5.13",
     "@types/js-md5": "^0.7.2",
@@ -49,13 +48,10 @@
     "@types/nodemailer": "^6.4.15",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
-    "@vercel/style-guide": "^6.0.0",
     "autoprefixer": "^10.4.19",
     "cpx2": "^7.0.1",
     "cspell": "^8.9.1",
     "daisyui": "^4.12.2",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.4",
     "lefthook": "^1.6.18",
     "next-superjson-plugin": "^0.6.3",
     "postcss": "^8.4.38",
