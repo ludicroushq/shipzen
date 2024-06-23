@@ -1,5 +1,4 @@
 import { render } from '@react-email/components';
-import * as Sentry from '@sentry/nextjs';
 import { createTransport } from 'nodemailer';
 import type { ComponentType } from 'react';
 import { logger } from '@/logger';
@@ -33,7 +32,6 @@ export async function sendEmail<T>(
   });
 
   if (email.rejected.length > 0) {
-    Sentry.captureMessage(`Email rejected: ${email.rejected.join(', ')}`);
     logger.error('Email rejected', email.rejected.join(', '));
   }
 }

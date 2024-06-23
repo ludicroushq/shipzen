@@ -38,9 +38,6 @@ yarn-error.log*
 # wireit
 .wireit
 
-# Sentry Config File
-.sentryclirc
-
 # prisma
 prisma/json-schema
 prisma/schema.prisma
