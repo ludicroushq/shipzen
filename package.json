@@ -21,7 +21,6 @@
     "@premieroctet/next-admin": "^4.4.4",
     "@prisma/client": "^5.15.1",
     "@react-email/components": "^0.0.19",
-    "@sentry/nextjs": "^8.11.0",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@zenstackhq/runtime": "^2.2.4",
     "js-md5": "^0.8.3",
@@ -43,6 +42,7 @@
   },
   "devDependencies": {
     "@cspell/eslint-plugin": "^8.9.1",
+    "@dotenvx/dotenvx": "^0.45.0",
     "@tailwindcss/typography": "^0.5.13",
     "@types/js-md5": "^0.7.2",
     "@types/node": "^20.14.8",
@@ -68,7 +68,7 @@
     "zenstack": "^2.2.4"
   },
   "shipzen": {
-    "version": "0.1.4"
+    "version": "0.1.5"
   },
   "wireit": {
     "build": {

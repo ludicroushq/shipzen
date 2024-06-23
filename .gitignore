@@ -26,6 +26,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env.keys
 .env*.local
 
 # vercel
@@ -36,9 +37,6 @@ yarn-error.log*
 
 # wireit
 .wireit
-
-# Sentry Config File
-.sentryclirc
 
 # prisma
 prisma/json-schema
