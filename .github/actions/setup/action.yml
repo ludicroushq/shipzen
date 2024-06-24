@@ -13,5 +13,8 @@ runs:
         node-version: 'lts/*'
         cache: 'pnpm'
 
+    - run: curl -sfS https://dotenvx.sh/install.sh | sh
+      shell: bash
+
     - run: pnpm install
       shell: bash
