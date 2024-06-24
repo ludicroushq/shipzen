@@ -3,8 +3,11 @@
     "parallel": true,
     "commands": {
       "lint": {
-        "run": "npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}",
+        "run": "pnpm biome check --write --unsafe --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}",
         "stage_fixed": true
+      },
+      "spellcheck": {
+        "run": "pnpm cspell lint --no-summary --no-progress --no-must-find-files {staged_files}"
       }
     }
   }
