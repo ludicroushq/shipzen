@@ -7,11 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: 'npm'
+      - uses: ./.github/actions/setup
 
-      - run: npm ci
-
-      - run: npm run ci:test
+      - run: pnpm run ci:test
