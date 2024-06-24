@@ -8,6 +8,7 @@
     "citext",
     "daisyui",
     "datasource",
+    "dotenv",
     "dotenvx",
     "filenaming",
     "infisical",
