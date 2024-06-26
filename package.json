@@ -11,7 +11,8 @@
     "spellcheck": "wireit",
     "start": "wireit",
     "test": "wireit",
-    "typecheck": "wireit"
+    "typecheck": "wireit",
+    "zenstack:generate": "wireit"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.4.1",
