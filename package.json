@@ -21,6 +21,7 @@
     "@react-email/components": "^0.0.19",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@zenstackhq/runtime": "^2.2.4",
+    "analytics": "^0.8.13",
     "js-md5": "^0.8.3",
     "lucide-react": "^0.396.0",
     "next": "^14.2.4",
