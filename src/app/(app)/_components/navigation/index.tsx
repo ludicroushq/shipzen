@@ -72,7 +72,7 @@ export function Navigation(props: NavigationProps) {
 
   return (
     <div className="border-b">
-      <div className="container">
+      <div className="container mx-auto">
         <div className="navbar px-0">
           <div className="navbar-start">
             <Link href="/" className="font-bold text-2xl">

@@ -3,7 +3,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 export default function Home() {
   return (
-    <section className="container mt-12">
+    <section className="container mx-auto mt-12">
       <div className="prose prose-lg">
         <h1>TODO</h1>
         <p>TODO</p>

@@ -5,7 +5,7 @@ export function Footer() {
 
   return (
     <div className="mt-6 border-t py-6">
-      <div className="container">
+      <div className="container mx-auto">
         <footer className="footer">
           <nav>
             <h6 className="footer-title">&copy; {year} TODO. All rights reserved.</h6>
