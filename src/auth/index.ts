@@ -1,4 +1,4 @@
-import { from, transport } from "@/mailer/config";
+import { getTransportOptions } from "@/mailer/config";
 import { _prisma } from "@/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type User, UserRole } from "@prisma/client";
@@ -28,8 +28,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Nodemailer({
       id: "email",
       name: "Email",
-      server: transport,
-      from,
+      server: getTransportOptions(),
     }),
   ],
   callbacks: {
