@@ -8,10 +8,7 @@ export const env = createEnv({
     AUTH_SECRET: z.string().min(0),
     DATABASE_URL: z.string().url(),
     DATABASE_DIRECT_URL: z.string().url(),
-    IS_STANDALONE: z
-      .string()
-      .optional()
-      .transform((s) => s === "true"),
+    REDIS_URL: z.string().url().optional(),
     SMTP_URL: z.string().url(),
   },
   client: {},

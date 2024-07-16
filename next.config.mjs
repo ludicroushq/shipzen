@@ -1,6 +1,6 @@
 // @ts-check
+import "./src/config/env.mjs";
 import cpx from "cpx2";
-import { env } from "./src/config/env.mjs";
 
 /**
  * Next.js and Tailwind do not support symbolic links
@@ -14,13 +14,25 @@ function syncModuleToApp(name) {
 }
 syncModuleToApp("admin");
 syncModuleToApp("auth");
+syncModuleToApp("bull");
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
-  output: env.IS_STANDALONE ? "standalone" : undefined,
   poweredByHeader: false,
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  experimental: {
+    instrumentationHook: true,
+    serverComponentsExternalPackages: ["@zenstackhq/runtime"],
+    swcPlugins: [
+      [
+        "next-superjson-plugin",
+        {
+          excluded: [],
+        },
+      ],
+    ],
   },
   images: {
     remotePatterns: [
@@ -31,16 +43,12 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    serverComponentsExternalPackages: ["@zenstackhq/runtime"],
-    swcPlugins: [
-      [
-        "next-superjson-plugin",
-        {
-          excluded: [],
-        },
-      ],
-    ],
+  webpack: (config) => {
+    config.module = {
+      ...config.module,
+      exprContextCritical: false,
+    };
+    return config;
   },
 };
 
