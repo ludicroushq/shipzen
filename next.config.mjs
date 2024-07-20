@@ -12,6 +12,7 @@ function syncModuleToApp(name) {
     clean: true,
   });
 }
+syncModuleToApp("api");
 syncModuleToApp("admin");
 syncModuleToApp("auth");
 syncModuleToApp("bull");
