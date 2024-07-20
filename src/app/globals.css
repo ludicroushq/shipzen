@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply font-body;
+    @apply font-sans;
   }
 
   h1,

@@ -22,10 +22,10 @@ const config = {
           primary: defaultColors.zinc,
         },
       },
-    },
-    fontFamily: {
-      display: ["var(--font-inter-tight)", ...defaultTheme.fontFamily.sans],
-      body: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+      fontFamily: {
+        display: ["var(--font-inter-tight)", "var(--font-inter)", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+      },
     },
   },
   presets: [require("@premieroctet/next-admin/dist/preset")],
