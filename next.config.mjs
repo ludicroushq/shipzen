@@ -24,7 +24,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    instrumentationHook: true,
     serverComponentsExternalPackages: ["@zenstackhq/runtime"],
     swcPlugins: [
       [
