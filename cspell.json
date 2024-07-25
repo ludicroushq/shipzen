@@ -9,6 +9,7 @@
     "citext",
     "daisyui",
     "datasource",
+    "deepmerge",
     "dotenv",
     "dotenvx",
     "filenaming",

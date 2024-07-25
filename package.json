@@ -26,6 +26,7 @@
     "@zenstackhq/runtime": "^2.3.3",
     "analytics": "^0.8.13",
     "bullmq": "^5.10.3",
+    "deepmerge-ts": "^7.1.0",
     "hono": "^4.5.1",
     "ioredis": "^5.4.1",
     "js-md5": "^0.8.3",
@@ -41,6 +42,7 @@
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "tslog": "^4.9.3",
+    "tsx": "^4.16.2",
     "zod": "^3.23.8",
     "zsa": "^0.5.1",
     "zsa-react": "^0.2.2"
@@ -76,7 +78,7 @@
       "dependencies": ["app:build"]
     },
     "dev": {
-      "dependencies": ["app:dev"]
+      "dependencies": ["app:dev", "worker:dev"]
     },
     "lint": {
       "command": "biome check . --write --unsafe",
@@ -86,7 +88,7 @@
       "command": "cspell lint . --quiet"
     },
     "start": {
-      "dependencies": ["app:start"]
+      "dependencies": ["app:start", "worker:start"]
     },
     "test": {
       "dependencies": ["lint", "spellcheck", "typecheck"]
@@ -126,6 +128,16 @@
     },
     "mailer:dev": {
       "command": "email dev --dir=./src/mailer/emails",
+      "service": true
+    },
+    "worker:start": {
+      "command": "tsx src/worker/start.ts",
+      "dependencies": ["zenstack:generate"],
+      "service": true
+    },
+    "worker:dev": {
+      "command": "tsx src/worker/start.ts",
+      "dependencies": ["zenstack:generate"],
       "service": true
     },
     "zenstack:generate": {

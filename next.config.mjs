@@ -15,7 +15,7 @@ function syncModuleToApp(name) {
 syncModuleToApp("api");
 syncModuleToApp("admin");
 syncModuleToApp("auth");
-syncModuleToApp("bull");
+syncModuleToApp("worker");
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
