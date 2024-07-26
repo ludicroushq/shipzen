@@ -1,6 +1,9 @@
 import type { Job } from "bullmq";
 
-export async function helloWorld(job: Job<{ name: string }>) {
+type Data = {
+  name: string;
+};
+export async function helloWorld(job: Job<Data>) {
   const { name } = job.data;
   job.log(`Hello ${name}!`);
 }
