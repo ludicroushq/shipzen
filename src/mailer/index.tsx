@@ -2,9 +2,9 @@ import { logger } from "@/logger";
 import { render } from "@react-email/components";
 import { createTransport } from "nodemailer";
 import type { ComponentType } from "react";
-import { from, replyTo, transport } from "./config";
+import { getTransportOptions } from "./config";
 
-export const transporter = createTransport(transport);
+export const transporter = createTransport(getTransportOptions());
 
 export type EmailProps = {
   subject: string;
@@ -19,8 +19,6 @@ export async function sendEmail<T>(opts: EmailProps, Component: ComponentType<T 
     plainText: true,
   });
   const email = await transporter.sendMail({
-    from,
-    replyTo: replyTo ?? undefined,
     to,
     subject,
     html: emailBody,

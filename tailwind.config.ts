@@ -8,26 +8,24 @@ const config = {
   prefix: "",
   theme: {
     extend: {
+      container: {
+        padding: {
+          DEFAULT: "1rem",
+          sm: "2rem",
+          lg: "4rem",
+          xl: "5rem",
+          "2xl": "6rem",
+        },
+      },
       colors: {
         nextadmin: {
           primary: defaultColors.zinc,
         },
       },
-    },
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: "2rem",
-        sm: "3.5rem",
-        md: "4rem",
-        lg: "4rem",
-        xl: "4rem",
-        "2xl": "4rem",
+      fontFamily: {
+        display: ["var(--font-inter-tight)", "var(--font-inter)", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
       },
-    },
-    fontFamily: {
-      display: ["var(--font-inter-tight)", ...defaultTheme.fontFamily.sans],
-      body: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
     },
   },
   presets: [require("@premieroctet/next-admin/dist/preset")],

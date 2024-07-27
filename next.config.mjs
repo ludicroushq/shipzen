@@ -1,6 +1,6 @@
 // @ts-check
+import "./src/config/env.mjs";
 import cpx from "cpx2";
-import { env } from "./src/config/env.mjs";
 
 /**
  * Next.js and Tailwind do not support symbolic links
@@ -12,24 +12,16 @@ function syncModuleToApp(name) {
     clean: true,
   });
 }
+syncModuleToApp("api");
 syncModuleToApp("admin");
 syncModuleToApp("auth");
+syncModuleToApp("worker");
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
-  output: env.IS_STANDALONE ? "standalone" : undefined,
   poweredByHeader: false,
   eslint: {
     ignoreDuringBuilds: true,
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "www.gravatar.com",
-        pathname: "/avatar/**",
-      },
-    ],
   },
   experimental: {
     serverComponentsExternalPackages: ["@zenstackhq/runtime"],
@@ -41,6 +33,22 @@ const nextConfig = {
         },
       ],
     ],
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.gravatar.com",
+        pathname: "/avatar/**",
+      },
+    ],
+  },
+  webpack: (config) => {
+    config.module = {
+      ...config.module,
+      exprContextCritical: false,
+    };
+    return config;
   },
 };
 

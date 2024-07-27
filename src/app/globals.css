@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply font-body;
+    @apply font-sans;
   }
 
   h1,
@@ -18,10 +18,6 @@
 }
 
 @layer components {
-  .container {
-    @apply max-w-[64rem];
-  }
-
   label:has(> input:required) .label-text::after {
     content: ' *';
     @apply text-error;
