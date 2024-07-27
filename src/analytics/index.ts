@@ -12,7 +12,6 @@ type Track = {
   };
 };
 function createAnalytics() {
-  // biome-ignore lint/suspicious/noExplicitAny: restArguments
   function track<Key extends keyof Track>(name: Key, data: Track[Key], ...restArguments: any[]) {
     _analytics.track(name, data, ...restArguments);
   }

@@ -48,7 +48,6 @@
     "zsa-react": "^0.2.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
     "@dotenvx/dotenvx": "^1.6.4",
     "@tailwindcss/typography": "^0.5.13",
     "@types/js-md5": "^0.7.2",
