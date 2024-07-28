@@ -1,5 +1,7 @@
-// eslint-disable-next-line unicorn/prefer-module
 export default {
-	extends: ['xo-nextjs'],
+	extends: ['plugin:@next/next/core-web-vitals', 'xo-nextjs'],
 	prettier: true,
+	rules: {
+		'import/extensions': 'off',
+	}
 };
