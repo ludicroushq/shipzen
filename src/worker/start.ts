@@ -1,7 +1,7 @@
-import { env } from "@/config/env.mjs";
 import { logger } from "@/logger";
 import { workerConnection } from "./connection";
 import { createWorkers } from "./utils/create-workers";
+import { env } from "@/config/env.js";
 
 async function start() {
   logger.info("Starting worker...");

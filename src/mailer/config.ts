@@ -1,4 +1,4 @@
-import { env } from "@/config/env.mjs";
+import { env } from "@/config/env.js";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
 
 export function getTransportOptions(): SMTPTransport.Options {

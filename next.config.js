@@ -1,5 +1,5 @@
 // @ts-check
-import "./src/config/env.mjs";
+import "./src/config/env.js";
 import cpx from "cpx2";
 
 /**

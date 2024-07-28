@@ -1,4 +1,4 @@
-import { env } from "@/config/env.mjs";
+import { env } from "@/config/env.js";
 import IORedis from "ioredis";
 
 export const queueConnection = new IORedis(env.REDIS_URL ?? "", {
