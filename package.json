@@ -59,6 +59,7 @@
     "cpx2": "^7.0.1",
     "cspell": "^8.12.1",
     "daisyui": "^4.12.10",
+    "eslint-config-xo-nextjs": "^6.1.0",
     "lefthook": "^1.7.5",
     "next-superjson-plugin": "^0.6.3",
     "postcss": "^8.4.39",
@@ -67,6 +68,7 @@
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.4",
     "wireit": "^0.14.5",
+    "xo": "^0.59.2",
     "zenstack": "^2.3.3"
   },
   "shipzen": {
