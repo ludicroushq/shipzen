@@ -3,5 +3,5 @@ export default {
 	prettier: true,
 	rules: {
 		'import/extensions': 'off',
-	}
+	},
 };
