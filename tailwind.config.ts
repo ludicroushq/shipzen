@@ -1,6 +1,10 @@
 import type { Config } from "tailwindcss";
 import * as defaultColors from "tailwindcss/colors";
 import defaultTheme from "tailwindcss/defaultTheme";
+import tailwindTypography from '@tailwindcss/typography';
+import tailwindAnimate from 'tailwindcss-animate';
+import daisyui from 'daisyui';
+import nextAdminPreset from '@premieroctet/next-admin/dist/preset';
 
 const config = {
   darkMode: ["class"],
@@ -28,8 +32,8 @@ const config = {
       },
     },
   },
-  presets: [require("@premieroctet/next-admin/dist/preset")],
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate"), require("daisyui")],
+  presets: [nextAdminPreset],
+  plugins: [tailwindTypography, tailwindAnimate, daisyui],
   daisyui: {
     themes: [
       {
