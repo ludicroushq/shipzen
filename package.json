@@ -84,7 +84,7 @@
       "dependencies": ["app:dev", "worker:dev"]
     },
     "lint": {
-      "command": "biome check . --write --unsafe",
+      "command": "xo --fix",
       "dependencies": ["zenstack:generate"]
     },
     "spellcheck": {
@@ -119,7 +119,7 @@
       "dependencies": ["ci:lint", "ci:spellcheck", "ci:typecheck"]
     },
     "ci:lint": {
-      "command": "biome check .",
+      "command": "xo",
       "dependencies": ["zenstack:generate"]
     },
     "ci:spellcheck": {
