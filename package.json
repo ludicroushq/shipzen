@@ -78,37 +78,59 @@
   },
   "wireit": {
     "build": {
-      "dependencies": ["app:build"]
+      "dependencies": [
+        "app:build"
+      ]
     },
     "dev": {
-      "dependencies": ["app:dev", "worker:dev"]
+      "dependencies": [
+        "app:dev",
+        "worker:dev"
+      ]
     },
     "lint": {
       "command": "xo --fix",
-      "dependencies": ["zenstack:generate"]
+      "dependencies": [
+        "zenstack:generate"
+      ]
     },
     "spellcheck": {
       "command": "cspell lint . --quiet"
     },
     "start": {
-      "dependencies": ["app:start", "worker:start"]
+      "dependencies": [
+        "app:start",
+        "worker:start"
+      ]
     },
     "test": {
-      "dependencies": ["lint", "spellcheck", "typecheck"]
+      "dependencies": [
+        "lint",
+        "spellcheck",
+        "typecheck"
+      ]
     },
     "typecheck": {
       "command": "tsc --noEmit",
-      "dependencies": ["zenstack:generate"]
+      "dependencies": [
+        "zenstack:generate"
+      ]
     },
     "app:dev": {
       "command": "next dev -p 3000",
       "service": true,
-      "dependencies": ["zenstack:generate"]
+      "dependencies": [
+        "zenstack:generate"
+      ]
     },
     "app:build": {
       "command": "next build",
-      "dependencies": ["zenstack:generate"],
-      "output": [".next/**/*"],
+      "dependencies": [
+        "zenstack:generate"
+      ],
+      "output": [
+        ".next/**/*"
+      ],
       "clean": false
     },
     "app:start": {
@@ -116,18 +138,26 @@
       "service": true
     },
     "ci:test": {
-      "dependencies": ["ci:lint", "ci:spellcheck", "ci:typecheck"]
+      "dependencies": [
+        "ci:lint",
+        "ci:spellcheck",
+        "ci:typecheck"
+      ]
     },
     "ci:lint": {
       "command": "xo",
-      "dependencies": ["zenstack:generate"]
+      "dependencies": [
+        "zenstack:generate"
+      ]
     },
     "ci:spellcheck": {
       "command": "cspell lint . --quiet"
     },
     "ci:typecheck": {
       "command": "tsc --noEmit",
-      "dependencies": ["zenstack:generate"]
+      "dependencies": [
+        "zenstack:generate"
+      ]
     },
     "mailer:dev": {
       "command": "email dev --dir=./src/mailer/emails",
@@ -135,18 +165,28 @@
     },
     "worker:start": {
       "command": "tsx src/worker/start.ts",
-      "dependencies": ["zenstack:generate"],
+      "dependencies": [
+        "zenstack:generate"
+      ],
       "service": true
     },
     "worker:dev": {
       "command": "tsx src/worker/start.ts",
-      "dependencies": ["zenstack:generate"],
+      "dependencies": [
+        "zenstack:generate"
+      ],
       "service": true
     },
     "zenstack:generate": {
       "command": "zenstack generate",
-      "files": ["prisma/**/*", "schema.zmodel"],
-      "output": ["node_modules/.prisma/**/*", "node_modules/.zenstack/**/*"]
+      "files": [
+        "prisma/**/*",
+        "schema.zmodel"
+      ],
+      "output": [
+        "node_modules/.prisma/**/*",
+        "node_modules/.zenstack/**/*"
+      ]
     }
   }
 }
