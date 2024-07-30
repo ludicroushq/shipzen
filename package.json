@@ -60,7 +60,7 @@
     "cpx2": "^7.0.1",
     "cspell": "^8.12.1",
     "daisyui": "^4.12.10",
-    "eslint-config-xo-nextjs": "^6.1.0",
+    "eslint-config-next": "^14.2.5",
     "lefthook": "^1.7.5",
     "next-superjson-plugin": "^0.6.3",
     "postcss": "^8.4.39",

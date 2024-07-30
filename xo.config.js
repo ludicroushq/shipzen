@@ -1,5 +1,5 @@
 const config = {
-	extends: ['plugin:@next/next/core-web-vitals', 'xo-nextjs'],
+	extends: ['plugin:@next/next/core-web-vitals'],
 	ignore: 'next-env.d.ts',
 	prettier: true,
 	rules: {
