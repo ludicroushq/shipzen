@@ -1,4 +1,4 @@
 {
-  "editor.defaultFormatter": "samverschueren.linter-xo",
-  "eslint.enabled": false
+	"editor.defaultFormatter": "samverschueren.linter-xo",
+	"eslint.enabled": false
 }

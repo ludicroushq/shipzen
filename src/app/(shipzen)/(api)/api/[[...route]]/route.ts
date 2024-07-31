@@ -1,5 +1,5 @@
-import { handle } from "hono/vercel";
-import { hono } from "@/api";
+import {handle} from 'hono/vercel';
+import {hono} from '@/api';
 
 export const GET = handle(hono); // eslint-disable-line @typescript-eslint/naming-convention
 export const POST = handle(hono); // eslint-disable-line @typescript-eslint/naming-convention

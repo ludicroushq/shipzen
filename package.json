@@ -121,13 +121,6 @@
 				"zenstack:generate"
 			]
 		},
-		"app:dev": {
-			"command": "next dev -p 3000",
-			"service": true,
-			"dependencies": [
-				"zenstack:generate"
-			]
-		},
 		"app:build": {
 			"command": "next build",
 			"dependencies": [
@@ -138,17 +131,16 @@
 			],
 			"clean": false
 		},
+		"app:dev": {
+			"command": "next dev -p 3000",
+			"service": true,
+			"dependencies": [
+				"zenstack:generate"
+			]
+		},
 		"app:start": {
 			"command": "next start -p 3000",
 			"service": true
-		},
-		"ci:test": {
-			"dependencies": [
-				"ci:lint",
-				"ci:pretty",
-				"ci:spellcheck",
-				"ci:typecheck"
-			]
 		},
 		"ci:lint": {
 			"command": "xo",
@@ -162,6 +154,14 @@
 		"ci:spellcheck": {
 			"command": "cspell lint . --quiet"
 		},
+		"ci:test": {
+			"dependencies": [
+				"ci:lint",
+				"ci:pretty",
+				"ci:spellcheck",
+				"ci:typecheck"
+			]
+		},
 		"ci:typecheck": {
 			"command": "tsc --noEmit",
 			"dependencies": [
@@ -172,14 +172,14 @@
 			"command": "email dev --dir=./src/mailer/emails",
 			"service": true
 		},
-		"worker:start": {
+		"worker:dev": {
 			"command": "tsx src/worker/start.ts",
 			"dependencies": [
 				"zenstack:generate"
 			],
 			"service": true
 		},
-		"worker:dev": {
+		"worker:start": {
 			"command": "tsx src/worker/start.ts",
 			"dependencies": [
 				"zenstack:generate"
