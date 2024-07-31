@@ -3,11 +3,11 @@
 		"parallel": true,
 		"commands": {
 			"lint": {
-				"run": "pnpm xo --fix {staged_files}",
+				"run": "pnpm xo --fix {staged_files} --quiet",
 				"stage_fixed": true
 			},
 			"pretty": {
-				"run": "pnpm prettier --write {staged_files}",
+				"run": "pnpm prettier --write {staged_files} --log-level silent",
 				"stage_fixed": true
 			},
 			"spellcheck": {
