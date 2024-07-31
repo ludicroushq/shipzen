@@ -1,5 +1,3 @@
-import { auth } from "@/auth";
-import { queues } from "@/worker";
 import { createBullBoard } from "@bull-board/api";
 import { BullMQAdapter } from "@bull-board/api/bullMQAdapter";
 import { HonoAdapter } from "@bull-board/hono";
@@ -7,6 +5,8 @@ import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import { notFound } from "next/navigation";
+import { queues } from "@/worker";
+import { auth } from "@/auth";
 
 const serverAdapter = new HonoAdapter(serveStatic);
 serverAdapter.setBasePath("/admin/worker");
@@ -41,10 +41,10 @@ app.use(async (_, next) => {
 });
 app.route("/admin/worker", serverAdapter.registerPlugin());
 
-export const GET = handle(app);
-export const POST = handle(app);
-export const PUT = handle(app);
-export const PATCH = handle(app);
-export const DELETE = handle(app);
-export const HEAD = handle(app);
-export const OPTIONS = handle(app);
+export const GET = handle(app); // eslint-disable-line @typescript-eslint/naming-convention
+export const POST = handle(app); // eslint-disable-line @typescript-eslint/naming-convention
+export const PUT = handle(app); // eslint-disable-line @typescript-eslint/naming-convention
+export const PATCH = handle(app); // eslint-disable-line @typescript-eslint/naming-convention
+export const DELETE = handle(app); // eslint-disable-line @typescript-eslint/naming-convention
+export const HEAD = handle(app); // eslint-disable-line @typescript-eslint/naming-convention
+export const OPTIONS = handle(app); // eslint-disable-line @typescript-eslint/naming-convention
