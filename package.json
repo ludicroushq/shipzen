@@ -1,149 +1,201 @@
 {
-  "name": "TODO",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "build": "wireit",
-    "ci:test": "wireit",
-    "dev": "wireit",
-    "lint": "wireit",
-    "mailer:dev": "wireit",
-    "spellcheck": "wireit",
-    "start": "wireit",
-    "test": "wireit",
-    "typecheck": "wireit",
-    "zenstack:generate": "wireit"
-  },
-  "dependencies": {
-    "@auth/prisma-adapter": "^2.4.1",
-    "@bull-board/api": "^5.21.1",
-    "@bull-board/hono": "^5.21.1",
-    "@hono/node-server": "^1.12.0",
-    "@premieroctet/next-admin": "^4.4.5",
-    "@prisma/client": "^5.17.0",
-    "@react-email/components": "^0.0.22",
-    "@t3-oss/env-nextjs": "^0.11.0",
-    "@zenstackhq/runtime": "^2.3.3",
-    "analytics": "^0.8.13",
-    "bullmq": "^5.10.3",
-    "deepmerge-ts": "^7.1.0",
-    "hono": "^4.5.1",
-    "ioredis": "^5.4.1",
-    "js-md5": "^0.8.3",
-    "lucide-react": "^0.414.0",
-    "next": "^14.2.5",
-    "next-auth": "^5.0.0-beta.18",
-    "nodemailer": "^6.9.14",
-    "prisma-json-schema-generator": "5.1.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "sharp": "^0.33.3",
-    "sonner": "^1.5.0",
-    "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7",
-    "tslog": "^4.9.3",
-    "tsx": "^4.16.2",
-    "zod": "^3.23.8",
-    "zsa": "^0.5.1",
-    "zsa-react": "^0.2.2"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
-    "@dotenvx/dotenvx": "^1.6.4",
-    "@tailwindcss/typography": "^0.5.13",
-    "@types/js-md5": "^0.7.2",
-    "@types/node": "^20.14.12",
-    "@types/nodemailer": "^6.4.15",
-    "@types/react": "^18.3.2",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.19",
-    "cpx2": "^7.0.1",
-    "cspell": "^8.12.1",
-    "daisyui": "^4.12.10",
-    "lefthook": "^1.7.5",
-    "next-superjson-plugin": "^0.6.3",
-    "postcss": "^8.4.39",
-    "prisma": "^5.17.0",
-    "react-email": "^2.1.6",
-    "tailwindcss": "^3.4.6",
-    "typescript": "^5.5.4",
-    "wireit": "^0.14.5",
-    "zenstack": "^2.3.3"
-  },
-  "shipzen": {
-    "version": "0.1.8"
-  },
-  "wireit": {
-    "build": {
-      "dependencies": ["app:build"]
-    },
-    "dev": {
-      "dependencies": ["app:dev", "worker:dev"]
-    },
-    "lint": {
-      "command": "biome check . --write --unsafe",
-      "dependencies": ["zenstack:generate"]
-    },
-    "spellcheck": {
-      "command": "cspell lint . --quiet"
-    },
-    "start": {
-      "dependencies": ["app:start", "worker:start"]
-    },
-    "test": {
-      "dependencies": ["lint", "spellcheck", "typecheck"]
-    },
-    "typecheck": {
-      "command": "tsc --noEmit",
-      "dependencies": ["zenstack:generate"]
-    },
-    "app:dev": {
-      "command": "next dev -p 3000",
-      "service": true,
-      "dependencies": ["zenstack:generate"]
-    },
-    "app:build": {
-      "command": "next build",
-      "dependencies": ["zenstack:generate"],
-      "output": [".next/**/*"],
-      "clean": false
-    },
-    "app:start": {
-      "command": "next start -p 3000",
-      "service": true
-    },
-    "ci:test": {
-      "dependencies": ["ci:lint", "ci:spellcheck", "ci:typecheck"]
-    },
-    "ci:lint": {
-      "command": "biome check .",
-      "dependencies": ["zenstack:generate"]
-    },
-    "ci:spellcheck": {
-      "command": "cspell lint . --quiet"
-    },
-    "ci:typecheck": {
-      "command": "tsc --noEmit",
-      "dependencies": ["zenstack:generate"]
-    },
-    "mailer:dev": {
-      "command": "email dev --dir=./src/mailer/emails",
-      "service": true
-    },
-    "worker:start": {
-      "command": "tsx src/worker/start.ts",
-      "dependencies": ["zenstack:generate"],
-      "service": true
-    },
-    "worker:dev": {
-      "command": "tsx src/worker/start.ts",
-      "dependencies": ["zenstack:generate"],
-      "service": true
-    },
-    "zenstack:generate": {
-      "command": "zenstack generate",
-      "files": ["prisma/**/*", "schema.zmodel"],
-      "output": ["node_modules/.prisma/**/*", "node_modules/.zenstack/**/*"]
-    }
-  }
+	"name": "TODO",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "wireit",
+		"ci:test": "wireit",
+		"dev": "wireit",
+		"lint": "wireit",
+		"mailer:dev": "wireit",
+		"pretty": "wireit",
+		"spellcheck": "wireit",
+		"start": "wireit",
+		"test": "wireit",
+		"typecheck": "wireit",
+		"zenstack:generate": "wireit"
+	},
+	"dependencies": {
+		"@auth/prisma-adapter": "^2.4.1",
+		"@bull-board/api": "^5.21.1",
+		"@bull-board/hono": "^5.21.1",
+		"@hono/node-server": "^1.12.0",
+		"@premieroctet/next-admin": "^4.4.5",
+		"@prisma/client": "^5.17.0",
+		"@react-email/components": "^0.0.22",
+		"@t3-oss/env-nextjs": "^0.11.0",
+		"@zenstackhq/runtime": "^2.3.3",
+		"analytics": "^0.8.13",
+		"bullmq": "^5.10.3",
+		"deepmerge-ts": "^7.1.0",
+		"hono": "^4.5.1",
+		"ioredis": "^5.4.1",
+		"js-md5": "^0.8.3",
+		"lucide-react": "^0.414.0",
+		"next": "^14.2.5",
+		"next-auth": "^5.0.0-beta.18",
+		"nodemailer": "^6.9.14",
+		"prisma-json-schema-generator": "5.1.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"sharp": "^0.33.3",
+		"sonner": "^1.5.0",
+		"tailwind-merge": "^2.4.0",
+		"tailwindcss-animate": "^1.0.7",
+		"tslog": "^4.9.3",
+		"tsx": "^4.16.2",
+		"zod": "^3.23.8",
+		"zsa": "^0.5.1",
+		"zsa-react": "^0.2.2"
+	},
+	"devDependencies": {
+		"@dotenvx/dotenvx": "^1.6.4",
+		"@tailwindcss/typography": "^0.5.13",
+		"@types/js-md5": "^0.7.2",
+		"@types/node": "^20.14.12",
+		"@types/nodemailer": "^6.4.15",
+		"@types/react": "^18.3.2",
+		"@types/react-dom": "^18.3.0",
+		"autoprefixer": "^10.4.19",
+		"cpx2": "^7.0.1",
+		"cspell": "^8.12.1",
+		"daisyui": "^4.12.10",
+		"eslint-config-next": "^14.2.5",
+		"lefthook": "^1.7.5",
+		"next-superjson-plugin": "^0.6.3",
+		"postcss": "^8.4.39",
+		"prettier-plugin-tailwindcss": "^0.6.5",
+		"prisma": "^5.17.0",
+		"react-email": "^2.1.6",
+		"tailwindcss": "^3.4.6",
+		"typescript": "^5.5.4",
+		"wireit": "^0.14.5",
+		"xo": "^0.58.0",
+		"zenstack": "^2.3.3"
+	},
+	"shipzen": {
+		"version": "0.1.9"
+	},
+	"wireit": {
+		"build": {
+			"dependencies": [
+				"app:build"
+			]
+		},
+		"dev": {
+			"dependencies": [
+				"app:dev",
+				"worker:dev"
+			]
+		},
+		"lint": {
+			"command": "xo --fix",
+			"dependencies": [
+				"zenstack:generate"
+			]
+		},
+		"pretty": {
+			"command": "prettier --write ."
+		},
+		"spellcheck": {
+			"command": "cspell lint . --quiet"
+		},
+		"start": {
+			"dependencies": [
+				"app:start",
+				"worker:start"
+			]
+		},
+		"test": {
+			"dependencies": [
+				"lint",
+				"pretty",
+				"spellcheck",
+				"typecheck"
+			]
+		},
+		"typecheck": {
+			"command": "tsc --noEmit",
+			"dependencies": [
+				"zenstack:generate"
+			]
+		},
+		"app:build": {
+			"command": "next build",
+			"dependencies": [
+				"zenstack:generate"
+			],
+			"output": [
+				".next/**/*"
+			],
+			"clean": false
+		},
+		"app:dev": {
+			"command": "next dev -p 3000",
+			"service": true,
+			"dependencies": [
+				"zenstack:generate"
+			]
+		},
+		"app:start": {
+			"command": "next start -p 3000",
+			"service": true
+		},
+		"ci:lint": {
+			"command": "xo",
+			"dependencies": [
+				"zenstack:generate"
+			]
+		},
+		"ci:pretty": {
+			"command": "prettier --check ."
+		},
+		"ci:spellcheck": {
+			"command": "cspell lint . --quiet"
+		},
+		"ci:test": {
+			"dependencies": [
+				"ci:lint",
+				"ci:pretty",
+				"ci:spellcheck",
+				"ci:typecheck"
+			]
+		},
+		"ci:typecheck": {
+			"command": "tsc --noEmit",
+			"dependencies": [
+				"zenstack:generate"
+			]
+		},
+		"mailer:dev": {
+			"command": "email dev --dir=./src/mailer/emails",
+			"service": true
+		},
+		"worker:dev": {
+			"command": "tsx src/worker/start.ts",
+			"dependencies": [
+				"zenstack:generate"
+			],
+			"service": true
+		},
+		"worker:start": {
+			"command": "tsx src/worker/start.ts",
+			"dependencies": [
+				"zenstack:generate"
+			],
+			"service": true
+		},
+		"zenstack:generate": {
+			"command": "zenstack generate",
+			"files": [
+				"prisma/**/*",
+				"schema.zmodel"
+			],
+			"output": [
+				"node_modules/.prisma/**/*",
+				"node_modules/.zenstack/**/*"
+			]
+		}
+	}
 }

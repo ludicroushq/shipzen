@@ -1,14 +1,18 @@
 {
-  "pre-commit": {
-    "parallel": true,
-    "commands": {
-      "lint": {
-        "run": "pnpm biome check --write --unsafe --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}",
-        "stage_fixed": true
-      },
-      "spellcheck": {
-        "run": "pnpm cspell lint --no-summary --no-progress --no-must-find-files {staged_files}"
-      }
-    }
-  }
+	"pre-commit": {
+		"parallel": true,
+		"commands": {
+			"lint": {
+				"run": "pnpm xo --fix {staged_files} --quiet",
+				"stage_fixed": true
+			},
+			"pretty": {
+				"run": "pnpm prettier --write {staged_files} --log-level silent",
+				"stage_fixed": true
+			},
+			"spellcheck": {
+				"run": "pnpm cspell lint --no-summary --no-progress --no-must-find-files {staged_files}"
+			}
+		}
+	}
 }

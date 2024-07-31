@@ -1,6 +1,6 @@
-import { Hono } from "hono";
+import {Hono} from 'hono';
 
-export const hono = new Hono().basePath("/api");
+export const hono = new Hono().basePath('/api');
 hono.onError((err) => {
-  throw err;
+	throw err;
 });

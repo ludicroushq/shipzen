@@ -7,5 +7,5 @@ concurrency: main
 
 jobs:
   test:
-    uses: ./.github/workflows/_test.yml
+    uses: ./.github/workflows/_test.yaml
     secrets: inherit

@@ -3,23 +3,23 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply font-sans;
-  }
+	html {
+		@apply font-sans;
+	}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-display;
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-display;
+	}
 }
 
 @layer components {
-  label:has(> input:required) .label-text::after {
-    content: ' *';
-    @apply text-error;
-  }
+	label:has(> input:required) .label-text::after {
+		content: ' *';
+		@apply text-error;
+	}
 }
