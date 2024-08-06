@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/no-process-exit */
-import process from 'node:process';
+import process from 'process';
 import {workerConnection} from './connection';
 import {createWorkers} from './utils/create-workers';
 import {logger} from '@/logger';

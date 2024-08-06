@@ -7,7 +7,7 @@
 				"stage_fixed": true
 			},
 			"pretty": {
-				"run": "pnpm prettier --write {staged_files} --log-level silent",
+				"run": "pnpm prettier --write {staged_files} --log-level warn --ignore-unknown",
 				"stage_fixed": true
 			},
 			"spellcheck": {

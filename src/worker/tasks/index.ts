@@ -1,10 +1,5 @@
-import type {Job, QueueOptions} from 'bullmq';
+import {type Task} from '../utils/create-workers';
 import {helloWorld} from './hello-world';
-
-export type Task = ((job: Job) => Promise<void> | void) & {
-	queueOptions?: QueueOptions;
-	workerOptions?: WorkerOptions;
-};
 
 export const tasks = {
 	helloWorld,

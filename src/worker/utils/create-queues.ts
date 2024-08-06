@@ -1,6 +1,7 @@
 import {Queue, type QueueOptions} from 'bullmq';
 import {deepmerge} from 'deepmerge-ts';
-import {type Task, tasks} from '../tasks';
+import {tasks} from '../tasks';
+import {type Task} from './create-workers';
 import {logger} from '@/logger';
 
 export function createQueues(options: QueueOptions) {
