@@ -8,11 +8,15 @@ export type Task = ((job: Job) => Promise<void>) & {
 	workerOptions?: WorkerOptions;
 };
 
+type Tasks = typeof tasks;
+type Workers = {
+	[key in keyof Tasks]: Worker<Parameters<Tasks[key]>[0]['data']>;
+};
 export function createWorkers(options: WorkerOptions) {
-	const workers: Record<string, Worker> = {};
+	const workers: Partial<Workers> = {};
 	for (const key in tasks) {
 		if (Object.hasOwn(tasks, key)) {
-			const task = tasks[key as keyof typeof tasks] as Task;
+			const task = tasks[key as keyof Tasks] as Task;
 
 			const worker = new Worker(
 				key,
@@ -28,9 +32,9 @@ export function createWorkers(options: WorkerOptions) {
 			worker.on('failed', (job, err) => {
 				logger.error(err);
 			});
-			workers[key] = worker;
+			workers[key as keyof Workers] = worker;
 		}
 	}
 
-	return workers as Record<keyof typeof tasks, Worker>;
+	return workers as Workers;
 }
