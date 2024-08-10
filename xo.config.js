@@ -4,6 +4,7 @@ const config = {
 	prettier: true,
 	rules: {
 		'import/extensions': 'off',
+		'unicorn/prefer-node-protocol': 'off',
 		'unicorn/prevent-abbreviations': 'off',
 	},
 };

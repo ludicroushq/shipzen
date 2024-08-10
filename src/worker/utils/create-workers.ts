@@ -1,43 +1,26 @@
-import {Worker, type WorkerOptions} from 'bullmq';
+import {type Job, type QueueOptions, Worker, type WorkerOptions} from 'bullmq';
 import {deepmerge} from 'deepmerge-ts';
-import {type Task, tasks} from '../tasks';
+import {tasks} from '../tasks';
 import {logger} from '@/logger';
 
+export type Task = ((job: Job) => Promise<void>) & {
+	queueOptions?: QueueOptions;
+	workerOptions?: WorkerOptions;
+};
+
+type Tasks = typeof tasks;
+type Workers = {
+	[key in keyof Tasks]: Worker<Parameters<Tasks[key]>[0]['data']>;
+};
 export function createWorkers(options: WorkerOptions) {
-	const workers: Record<string, Worker> = {};
+	const workers: Partial<Workers> = {};
 	for (const key in tasks) {
 		if (Object.hasOwn(tasks, key)) {
-			const task = tasks[key as keyof typeof tasks] as Task;
+			const task = tasks[key as keyof Tasks] as Task;
 
 			const worker = new Worker(
 				key,
-				async (job) => {
-					const originalLog = job.log;
-					const originalClearLogs = job.clearLogs;
-					let logCounter = 0;
-
-					const subLogger = logger.getSubLogger({
-						name: `${job.queueName} - ${job.name}`,
-						attachedTransports: [
-							(logObj) => {
-								void originalLog(JSON.stringify(logObj));
-							},
-						],
-					});
-
-					job.log = async (message) => {
-						subLogger.info(message);
-						logCounter += 1;
-						return logCounter;
-					};
-
-					job.clearLogs = async (keepLogs?: number | undefined) => {
-						logCounter = 0;
-						return originalClearLogs(keepLogs);
-					};
-
-					await task(job);
-				},
+				task,
 				deepmerge({
 					...options,
 					...task.workerOptions,
@@ -46,9 +29,12 @@ export function createWorkers(options: WorkerOptions) {
 			worker.on('error', (err) => {
 				logger.error(err);
 			});
-			workers[key] = worker;
+			worker.on('failed', (job, err) => {
+				logger.error(err);
+			});
+			workers[key as keyof Workers] = worker;
 		}
 	}
 
-	return workers as Record<keyof typeof tasks, Worker>;
+	return workers as Workers;
 }
